@@ -17,6 +17,20 @@
         Lista tweetów
     </h1>
 </div>
+
+<%
+    if(request.getAttribute("resultsCount")!=null) {
+%>
+    <div>
+        <h2>
+            Ilość znalezionych tweetów: <%=(String)request.getAttribute("resultsCount")%>
+        </h2>
+    </div>
+<%
+    }
+%>
+
+<div>
     <ul>
         <%
             List<TwitterMessageDto> tweets = (List<TwitterMessageDto>) request.getAttribute("tweetsModel");
