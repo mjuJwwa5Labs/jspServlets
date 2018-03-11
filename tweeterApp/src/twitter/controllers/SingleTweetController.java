@@ -1,9 +1,9 @@
-package twitter.servlets;
+package twitter.controllers;
 
 import twitter.dto.TwitterMessageDto;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -12,12 +12,11 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet(name = "SingleTweetServlet", value = "/tweetSingleHtmlServlet")
-public class SingleTweetServlet extends HttpServlet{
+@WebServlet(name = "SingleTweetController", value="/tweet")
+public class SingleTweetController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ServletOutputStream out = resp.getOutputStream();
         String tweetIdAsString = req.getParameter("tweetId");
         Integer tweetId = Integer.valueOf(tweetIdAsString);
 
@@ -31,18 +30,9 @@ public class SingleTweetServlet extends HttpServlet{
         //todo DAO do getTweetById()
         TwitterMessageDto foundTweet = twitterMap.get(tweetId);
 
-        out.println("<html>");
-        out.println("<body>");
-        out.println("<div>Lista twiitów</div>");
-        out.println("<div>");
-            out.println("<form>");
-            out.println("<input type=\"text\" name=\"message\" value=\""+foundTweet.getMessage()+"\"/>");
-            out.println("<input type=\"text\" name=\"username\" value=\""+foundTweet.getUsername()+"\"/>");
-            out.println("<input type=\"hidden\" name=\"id\" value=\"\"/>");
-            out.println("</form>");
-        out.println("</div>");
-        out.println("</body>");
-        out.println("</html>");
+        req.setAttribute("singleTweetModel", foundTweet);
 
+        RequestDispatcher dispatcher = req.getRequestDispatcher("tweets/tweet.jsp");
+        dispatcher.forward(req,resp);
     }
 }

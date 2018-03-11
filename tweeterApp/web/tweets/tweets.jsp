@@ -22,9 +22,11 @@
             List<TwitterMessageDto> tweets = (List<TwitterMessageDto>) request.getAttribute("tweetsModel");
             for (TwitterMessageDto twitterMessageDto : tweets) {
         %>
-        <li>id: <%=twitterMessageDto.getId()%> ,
-            użytkownik: <%=twitterMessageDto.getUsername()%>,
-            treść: <%=twitterMessageDto.getMessage()%>
+        <li><strong>id:</strong> <%=twitterMessageDto.getId()%> ,
+            <ul>
+                <li><strong>użytkownik:</strong> <%=twitterMessageDto.getUsername()%></li>
+                <li><strong>treść: </strong><%=twitterMessageDto.getMessage()%></li>
+            </ul>
         </li>
         <%
             }
