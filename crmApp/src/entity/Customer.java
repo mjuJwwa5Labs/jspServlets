@@ -1,0 +1,32 @@
+package entity;
+
+public class Customer {
+
+    private Integer id;
+    private String customerName;
+    private String customerPhone;
+    private String customerEmail;
+
+    public Customer(Integer id, String customerName, String customerPhone, String customerEmail) {
+        this.id = id;
+        this.customerName = customerName;
+        this.customerPhone = customerPhone;
+        this.customerEmail = customerEmail;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public String getCustomerPhone() {
+        return customerPhone;
+    }
+
+    public String getCustomerEmail() {
+        return customerEmail;
+    }
+}
