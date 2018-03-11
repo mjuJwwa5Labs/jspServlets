@@ -6,5 +6,10 @@
   </head>
   <body>
     My Tweeter App
+    <%
+      for (int i = 0; i<10; i++) {
+          out.println("<div>Numer iteracji: " + i + "</div>");
+      }
+    %>
   </body>
 </html>

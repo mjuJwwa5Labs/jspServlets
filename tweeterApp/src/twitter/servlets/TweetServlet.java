@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "TweetsServlet", value = "/tweets")
+@WebServlet(name = "TweetsServlet", value = "/tweetsHtmlServlet")
 public class TweetServlet extends HttpServlet {
 
     @Override
