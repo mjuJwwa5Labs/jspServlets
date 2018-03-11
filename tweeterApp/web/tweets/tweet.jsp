@@ -8,19 +8,38 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Treść twojego tweeta</title>
+    <title>Strona edycji Tweeta</title>
 </head>
 <body>
-    <form>
+
+    <%
+        if (request.getAttribute("errorMessage")!=null) {
+    %>
+        <div><%=(String)request.getAttribute("errorMessage")%></div>
+    <%
+        }
+    %>
+
+    <%
+        if (request.getAttribute("singleTweetModel")!=null) {
+    %>
+    <form action="/addTweet" method="POST">
         <div>
-            <label for="user">Użytkownik:</label>
-            <input type="text" id="user" name="user" value="<%=((TwitterMessageDto)request.getAttribute("singleTweetModel")).getUsername()%>"/>
+            <label for="username">Użytkownik:</label>
+            <input type="text" id="username" name="username" value="<%=((TwitterMessageDto)request.getAttribute("singleTweetModel")).getUsername()%>"/>
         </div>
         <div>
             <label for="message">Wiadomość:</label>
             <input type="text" id="message" name="message" value="<%=((TwitterMessageDto)request.getAttribute("singleTweetModel")).getMessage()%>"/>
         </div>
+        <div>
+            <input type="submit" id="saveTweet" value="Dodaj tweeta"/>
+        </div>
         <input type="hidden" name="<%=((TwitterMessageDto)request.getAttribute("singleTweetModel")).getId()%>"/>
     </form>
+    <%
+        }
+    %>
+
 </body>
 </html>

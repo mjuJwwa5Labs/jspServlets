@@ -4,9 +4,12 @@ public class TwitterMessageDto {
 
     private Integer id;
 
-    private String message;
+    private String message="";
 
-    private String username;
+    private String username="";
+
+    public TwitterMessageDto() {
+    }
 
     public TwitterMessageDto(Integer id, String message, String username) {
         this.id = id;

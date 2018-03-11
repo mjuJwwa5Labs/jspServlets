@@ -23,8 +23,13 @@ public class SingleTweetController extends HttpServlet {
         Integer tweetId = Integer.valueOf(tweetIdAsString);
 
         TwitterMessageService twitterMessageService = new TwitterMessageServiceImpl();
-        TwitterMessageDto tweet = twitterMessageService.fingById(tweetId);
-        req.setAttribute("singleTweetModel", tweet);
+        TwitterMessageDto foundTweet = twitterMessageService.fingById(tweetId);
+
+        if (foundTweet==null) {
+            req.setAttribute("errorMessage", "Nie znaleziono wskazanego tweeta o id " + tweetId);
+        }
+
+        req.setAttribute("singleTweetModel", foundTweet);
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("tweets/tweet.jsp");
         dispatcher.forward(req,resp);

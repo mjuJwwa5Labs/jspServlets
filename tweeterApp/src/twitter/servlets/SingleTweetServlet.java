@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
+@Deprecated
 @WebServlet(name = "SingleTweetServlet", value = "/tweetSingleHtmlServlet")
 public class SingleTweetServlet extends HttpServlet{
 
