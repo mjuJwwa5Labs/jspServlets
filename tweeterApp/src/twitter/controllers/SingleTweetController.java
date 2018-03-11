@@ -1,6 +1,8 @@
 package twitter.controllers;
 
 import twitter.dto.TwitterMessageDto;
+import twitter.service.TwitterMessageService;
+import twitter.service.TwitterMessageServiceImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,17 +22,9 @@ public class SingleTweetController extends HttpServlet {
         String tweetIdAsString = req.getParameter("tweetId");
         Integer tweetId = Integer.valueOf(tweetIdAsString);
 
-        TwitterMessageDto twitterMessageDto1 = new TwitterMessageDto(1,"first message", "mike");
-        TwitterMessageDto twitterMessageDto2 = new TwitterMessageDto(2,"second message", "john");
-
-        Map<Integer, TwitterMessageDto> twitterMap = new HashMap<>();
-        twitterMap.put(twitterMessageDto1.getId(),twitterMessageDto1);
-        twitterMap.put(twitterMessageDto2.getId(),twitterMessageDto2);
-
-        //todo DAO do getTweetById()
-        TwitterMessageDto foundTweet = twitterMap.get(tweetId);
-
-        req.setAttribute("singleTweetModel", foundTweet);
+        TwitterMessageService twitterMessageService = new TwitterMessageServiceImpl();
+        TwitterMessageDto tweet = twitterMessageService.fingById(tweetId);
+        req.setAttribute("singleTweetModel", tweet);
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("tweets/tweet.jsp");
         dispatcher.forward(req,resp);
