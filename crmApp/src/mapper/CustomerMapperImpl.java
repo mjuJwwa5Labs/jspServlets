@@ -2,26 +2,31 @@ package mapper;
 
 import dto.CustomerDto;
 import entity.Customer;
+import entity.CustomerType;
 
 public class CustomerMapperImpl implements CustomerMapper {
 
     @Override
     public CustomerDto toCustomerDto(Customer customer) {
         Integer id = customer.getId();
-        String customerName = customer.getCustomerName();
-        String customerEmail = customer.getCustomerEmail();
-        String customerPhone = customer.getCustomerPhone();
-        CustomerDto customerDto = new CustomerDto(id,customerName,customerEmail,customerPhone);
+        String login = customer.getLogin();
+        String firstName = customer.getFirstName();
+        String lastName = customer.getLastName();
+        CustomerType customerType = customer.getCustomerType();
+        Integer addressId = customer.getAddressId();
+        CustomerDto customerDto = new CustomerDto(id,login,firstName,lastName,customerType,addressId);
         return customerDto;
     }
 
     @Override
     public Customer toCustomer(CustomerDto customerDto) {
         Integer id = customerDto.getId();
-        String customerName = customerDto.getCustomerName();
-        String customerEmail = customerDto.getCustomerEmail();
-        String customerPhone = customerDto.getCustomerPhone();
-        Customer customer = new Customer(id,customerName,customerEmail,customerPhone);
+        String login = customerDto.getLogin();
+        String firstName = customerDto.getFirstName();
+        String lastName = customerDto.getLastName();
+        CustomerType customerType = customerDto.getCustomerType();
+        Integer addressId = customerDto.getAddressId();
+        Customer customer = new Customer(id,login,firstName,lastName,customerType,addressId);
         return customer;
     }
 }

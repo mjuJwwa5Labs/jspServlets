@@ -28,9 +28,8 @@ public class CustomerDaoCsvImplTest {
 
         //then
         Assert.assertEquals("Customer id should be " + existingCustomer.getId(),existingCustomer.getId(),foundCustomer.getId());
-        Assert.assertEquals("Customer name should be " + existingCustomer.getCustomerName(),existingCustomer.getCustomerName(),foundCustomer.getCustomerName());
-        Assert.assertEquals("Customer phone should be " + existingCustomer.getCustomerPhone(),existingCustomer.getCustomerPhone(),foundCustomer.getCustomerPhone());
-        Assert.assertEquals("Customer email should be " + existingCustomer.getCustomerEmail(),existingCustomer.getCustomerEmail(),foundCustomer.getCustomerEmail());
+        Assert.assertEquals("Customer first name should be " + existingCustomer.getFirstName(),existingCustomer.getFirstName(),foundCustomer.getFirstName());
+        Assert.assertEquals("Customer last name should be " + existingCustomer.getLastName(),existingCustomer.getLastName(),foundCustomer.getLastName());
     }
 
     @Test
@@ -41,14 +40,8 @@ public class CustomerDaoCsvImplTest {
         //then
         Assert.assertTrue("List size should be greater than 0", allCustomers.size()>0);
         Assert.assertTrue("First customer id should be number greater than 0", allCustomers.get(0).getId()>0);
-        Assert.assertTrue("First customer name length should be greater than 0", allCustomers.get(0).getCustomerName().length()>0);
-        Assert.assertTrue("First customer phone number length should be greater than 0", allCustomers.get(0).getCustomerPhone().length()>0);
-        Assert.assertTrue("First customer email addres length should be greater than 0", allCustomers.get(0).getCustomerEmail().length()>0);
-
-        String customerEmail = allCustomers.get(0).getCustomerEmail();
-        String[] customerEmailArray = customerEmail.split("@");
-
-        Assert.assertEquals("First customer email addres should contain exactly one @ character", 2,customerEmailArray.length);
-
+        Assert.assertTrue("First customer first name length should be greater than 0", allCustomers.get(0).getFirstName().length()>0);
+        Assert.assertTrue("First customer last name length should be greater than 0", allCustomers.get(0).getLastName().length()>0);
+        Assert.assertTrue("First customer login length should be greater than 0", allCustomers.get(0).getLogin().length()>0);
     }
 }

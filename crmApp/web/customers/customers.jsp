@@ -8,14 +8,14 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<!--<%--<style><%@include file="/WEB-INF/css/style.css"%></style>--%>-->
+<style><%@include file="/WEB-INF/css/style.css"%></style>
 <head>
     <title>Aktualna lista klientów</title>
 </head>
 <body>
-    <p>
+    <header>
         Lista aktualnie zarejestrowanych klientów
-    </p>
+    </header>
 
     <div class="mainContainer">
         <div>
@@ -23,8 +23,19 @@
                     List<CustomerDto> customerDtoList = (List<CustomerDto>) request.getAttribute("customerDtoList");
                     for (CustomerDto customerDto : customerDtoList) {
                  %>
-                  <div clss="listElement">
-                      Imie i nazwisko: <%=customerDto.getCustomerName()%>
+                  <div class="customerDetailsRow">
+                      <div class="customerDetailsId">
+                          Numer klienta: <%=customerDto.getId().toString()%>
+                      </div>
+                      <div class="customerDetailsLogin">
+                          Login: <%=customerDto.getLogin()%>
+                      </div>
+                      <div class="customerDetailsFullName">
+                          Imię i nazwisko: <%=customerDto.getFirstName() + " " + customerDto.getLastName()%>
+                      </div>
+                      <div class="customerDetailsType">
+                          Typ konta: <%=customerDto.getCustomerType()%>
+                      </div>
                   </div>
                 <%
                     }

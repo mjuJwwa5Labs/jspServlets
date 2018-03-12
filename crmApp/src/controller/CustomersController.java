@@ -14,10 +14,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
-@WebServlet(name = "CustomerController", value = "/customers")
-public class CustomerController extends HttpServlet{
+@WebServlet(name = "CustomersController", value = "/customers")
+public class CustomersController extends HttpServlet{
 
+    @Override
+    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        Map<String,String[]> parametersMap = req.getParameterMap();
+        if (hasParameters(parametersMap)) {
+            if (parametersMap.containsKey("customerId")) {
+               resp.sendRedirect("/customers/customerDetails");
+            }
+        } else {
+            doGet(req,resp);
+        }
+    }
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -28,4 +41,9 @@ public class CustomerController extends HttpServlet{
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/customers/customers.jsp");
         requestDispatcher.forward(req,resp);
     }
+
+    private boolean hasParameters(Map<String,String[]> parametersMap) {
+        return parametersMap.size()>0;
+    }
+
 }

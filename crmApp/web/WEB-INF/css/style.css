@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    text-transform: capitalize;
+    padding: 10px;
+}
+
+.customerDetailsRow {
+    padding: 10px;
+}
+
+.customerDetailsRow:hover {
+    transition: linear 200ms;
+    color: #ff5b45;
+}
+
+.customerAddForm {
+    display: inline;
+}

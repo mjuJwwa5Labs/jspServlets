@@ -1,6 +1,7 @@
 package dao;
 
 import entity.Customer;
+import entity.CustomerType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,10 +35,12 @@ public class CustomerDaoInMemoryImpl implements CustomerDao {
         for (String line : customersCsv) {
             String[] lineSplitted = line.split(",");
             Integer id = Integer.valueOf(lineSplitted[0]);
-            String customerName = lineSplitted[1];
-            String customerPhone = lineSplitted[2];
-            String customerEmail = lineSplitted[3];
-            customerList.add(new Customer(id,customerName,customerPhone,customerEmail));
+            String login = lineSplitted[1];
+            String firstName = lineSplitted[2];
+            String lastName = lineSplitted[3];
+            CustomerType customerType = CustomerType.valueOf(lineSplitted[4]);
+            Integer addressId = Integer.valueOf(lineSplitted[5]);
+            customerList.add(new Customer(id,login,firstName,lastName,customerType,addressId));
         }
         return customerList;
     }
@@ -46,13 +49,13 @@ public class CustomerDaoInMemoryImpl implements CustomerDao {
 
         String[] emulatedCsv = new String[7];
 
-        emulatedCsv[0] = "1,Diane King,699489207,Diane.King@fakegmail.com";
-        emulatedCsv[1] = "2,Jimmy Wilson,799580212,Jimmy.Wilson@fakegmail.com";
-        emulatedCsv[2] = "3,Virginia Gonzalez,697177931,Virginia.Gonzalez@fakegmail.com";
-        emulatedCsv[3] = "4,Joyce Miller,884629703,Joyce.Miller@fakegmail.com";
-        emulatedCsv[4] = "5,Jonathan Morris,733163128,Jonathan.Morris@fakegmail.com";
-        emulatedCsv[5] = "6,Sean Hall,722917018,Sean.Hall@fakegmail.com";
-        emulatedCsv[6] = "7,Brian Robinson,666975536,Brian.Robinson@fakegmail.com";
+        emulatedCsv[0] = "1,Diane.King@fakegmail.com,Diane,King,REGULAR,13";
+        emulatedCsv[1] = "2,Jimmy.Wilson@fakegmail.com,Jimmy,Wilson,REGULAR,14";
+        emulatedCsv[2] = "3,Virginia.Gonzalez@fakegmail.com,Virginia,Gonzalez,REGULAR,18";
+        emulatedCsv[3] = "4,Joyce.Miller@fakegmail.com,Joyce,Miller,REGULAR,45";
+        emulatedCsv[4] = "5,Jonathan.Morris@fakegmail.com,Jonathan,Morris,VIP,70";
+        emulatedCsv[5] = "6,Sean.Hall@fakegmail.com,Sean,Hall,REGULAR,72";
+        emulatedCsv[6] = "7,Brian.Robinson@fakegmail.com,Brian,Robinson,VIP,82";
 
         return emulatedCsv;
     }

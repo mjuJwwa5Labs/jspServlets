@@ -1,6 +1,7 @@
 package dao;
 
 import entity.Customer;
+import entity.CustomerType;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -38,10 +39,12 @@ public class CustomerDaoCsvImpl implements CustomerDao {
             while (line != null) {
                 String[] lineSplitted = line.split(",");
                 Integer id = Integer.valueOf(lineSplitted[0]);
-                String customerName = lineSplitted[1];
-                String customerPhone = lineSplitted[2];
-                String customerEmail = lineSplitted[3];
-                customerList.add(new Customer(id,customerName,customerPhone,customerEmail));
+                String login = lineSplitted[1];
+                String firstName = lineSplitted[2];
+                String lastName = lineSplitted[3];
+                CustomerType customerType = CustomerType.valueOf(lineSplitted[4]);
+                Integer addressId = Integer.valueOf(lineSplitted[5]);
+                customerList.add(new Customer(id,login,firstName,lastName,customerType,addressId));
                 line = br.readLine();
             }
         } catch (FileNotFoundException e) {
