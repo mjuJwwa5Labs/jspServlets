@@ -4,6 +4,7 @@ package controller;
 import dto.CustomerDto;
 import service.CustomerService;
 import service.CustomerServiceCsvImpl;
+import service.CustomerServiceFactory;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,7 +21,7 @@ public class CustomerController extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        CustomerService customerService = new CustomerServiceCsvImpl();
+        CustomerService customerService = CustomerServiceFactory.factory("csv");
         List<CustomerDto> customerDtoList = customerService.getAllCustomers();
         req.setAttribute("customerDtoList", customerDtoList);
 

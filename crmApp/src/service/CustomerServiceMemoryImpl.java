@@ -1,7 +1,6 @@
 package service;
 
 import dao.CustomerDao;
-import dao.CustomerDaoCsvImpl;
 import dao.CustomerDaoInMemoryImpl;
 import dto.CustomerDto;
 import entity.Customer;
@@ -11,11 +10,11 @@ import mapper.CustomerMapperImpl;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustomerServiceCsvImpl implements CustomerService {
+public class CustomerServiceMemoryImpl implements CustomerService {
 
     @Override
     public CustomerDto getById(Integer id) {
-        CustomerDao customerDao = new CustomerDaoCsvImpl();
+        CustomerDao customerDao = new CustomerDaoInMemoryImpl();
         Customer customer = customerDao.getById(id);
 
         CustomerMapper customerMapper = new CustomerMapperImpl();
@@ -26,7 +25,7 @@ public class CustomerServiceCsvImpl implements CustomerService {
 
     @Override
     public List<CustomerDto> getAllCustomers() {
-        CustomerDao customerDao = new CustomerDaoCsvImpl();
+        CustomerDao customerDao = new CustomerDaoInMemoryImpl();
         List<Customer> customerList = customerDao.getAllCustomers();
 
         CustomerMapper customerMapper = new CustomerMapperImpl();

@@ -2,17 +2,13 @@ package dao;
 
 import entity.Customer;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerDaoCsvImpl implements CustomerDao {
 
-    private String customerDbPath ="./web/resources/customerData.csv";
-
+    private String customerDbPath ="/resources/customerData.csv";
 
     @Override
     public Customer getById(Integer id) {
@@ -33,10 +29,11 @@ public class CustomerDaoCsvImpl implements CustomerDao {
     }
 
     private List<Customer> readCustomersData() {
+        InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream(customerDbPath);
         List<Customer> customerList = new ArrayList<>();
 
         try {
-            BufferedReader br = new BufferedReader(new FileReader(customerDbPath));
+            BufferedReader br = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
             String line = br.readLine();
             while (line != null) {
                 String[] lineSplitted = line.split(",");
