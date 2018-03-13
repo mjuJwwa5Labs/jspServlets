@@ -29,4 +29,41 @@ public class CustomerMapperImpl implements CustomerMapper {
         Customer customer = new Customer(id,login,firstName,lastName,customerType,addressId);
         return customer;
     }
+
+    @Override
+    public CustomerDto toCustomerDtoWithoutEmptyStrings(CustomerDto customerDto) {
+
+        Integer id = null;
+        String login = null;
+        String firstName = null;
+        String lastName = null;
+        CustomerType customerType = null;
+        Integer addressId = null;
+
+        if (customerDto.getId()!=null) {
+            id = customerDto.getId();
+        }
+
+        if (customerDto.getLogin()!=null && customerDto.getLogin()!="") {
+            login = customerDto.getLogin();
+        }
+
+        if (customerDto.getFirstName()!=null && customerDto.getFirstName()!="") {
+            firstName = customerDto.getFirstName();
+        }
+
+        if (customerDto.getLastName()!=null && customerDto.getLastName()!="") {
+            lastName = customerDto.getLastName();
+        }
+
+        if (customerDto.getCustomerType()!=null) {
+            customerType = customerDto.getCustomerType();
+        }
+
+        if (customerDto.getAddressId()!=null) {
+            addressId = customerDto.getAddressId();
+        }
+
+        return new CustomerDto(id,login,firstName,lastName,customerType,addressId);
+    }
 }

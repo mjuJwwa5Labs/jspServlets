@@ -9,4 +9,6 @@ public interface CustomerMapper {
 
     public Customer toCustomer(CustomerDto customerDto);
 
+    public CustomerDto toCustomerDtoWithoutEmptyStrings(CustomerDto customerDto);
+
 }
