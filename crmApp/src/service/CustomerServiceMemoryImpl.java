@@ -38,4 +38,9 @@ public class CustomerServiceMemoryImpl implements CustomerService {
 
         return customerDtoList;
     }
+
+    @Override
+    public CustomerDto createNewCustomer(CustomerDto customerDto) {
+        return null;
+    }
 }

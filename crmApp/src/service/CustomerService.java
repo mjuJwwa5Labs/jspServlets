@@ -10,4 +10,5 @@ public interface CustomerService {
 
     public List<CustomerDto> getAllCustomers();
 
+    public CustomerDto createNewCustomer(CustomerDto customerDto);
 }
