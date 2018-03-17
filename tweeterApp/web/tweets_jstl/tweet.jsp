@@ -17,6 +17,22 @@
 </head>
 <body>
 
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/tweets">Mój tweeter</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="/addTweet">Dodaj tweeta</a></li>
+            <li><a href="/tweetSearchForm">Wyszukaj tweeta</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
+    </div>
+</nav>
+
     <c:choose>
         <c:when test="${not empty errorMessage}">
             <div class="container">

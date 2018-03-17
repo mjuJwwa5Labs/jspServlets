@@ -13,11 +13,28 @@
 </head>
 <body>
 
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/tweets">Mój tweeter</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="/addTweet">Dodaj tweeta</a></li>
+            <li><a href="/tweetSearchForm">Wyszukaj tweeta</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
+    </div>
+</nav>
+
 <c:if test="${not empty resultsCount}">
-    <div>
-        <h2>
-            Ilość znalezionych tweetów: ${resultsCount}
-        </h2>
+    <div class="container">
+        <div class="alert alert-success">
+            Ilość znalezionych tweetów: <strong>${resultsCount}</strong>
+        </div>
     </div>
 </c:if>
 
@@ -39,7 +56,7 @@
             <td>${tweet.id}</td>
             <td>${tweet.title}</td>
             <td>${tweet.username}</td>
-            <td><a href="/tweet?tweetId=${tweet.id}">Podgląd</a></td>
+            <td><a href="/tweet?tweetId=${tweet.id}" data-toggle="tooltip" title="TweetId = ${tweet.id}">Podgląd</a></td>
         </tr>
         </c:forEach>
         </tbody>
