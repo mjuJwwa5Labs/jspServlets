@@ -2,12 +2,11 @@ package service;
 
 public class CustomerServiceFactory {
 
-    public static CustomerService factory(String factoryParameter) {
-        String parameter = factoryParameter.toLowerCase();
-        switch (parameter) {
-            case "csv":
+    public static CustomerService factory(CustomerServiceFactoryEnum factoryParameter) {
+        switch (factoryParameter) {
+            case CSV:
                 return new CustomerServiceCsvImpl();
-            case "memory":
+            case MEMOMRY:
                 return new CustomerServiceMemoryImpl();
             default:
                 throw new IllegalArgumentException("Wrong parameter for CustomerServiceFactory");

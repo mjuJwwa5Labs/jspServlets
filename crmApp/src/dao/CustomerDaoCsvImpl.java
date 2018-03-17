@@ -3,6 +3,7 @@ package dao;
 import entity.Customer;
 import entity.CustomerType;
 
+import javax.servlet.ServletContext;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -56,4 +57,44 @@ public class CustomerDaoCsvImpl implements CustomerDao {
         return customerList;
     }
 
+    @Override
+    public Customer addNewCustomer(Customer customer, ServletContext servletContext) {
+        String customerLine = customerToCsvLine(customer);
+        String filePath = servletContext.getRealPath("WEB-INF");
+        filePath = filePath + "/classes" + customerDbPath;
+
+        try {
+            OutputStreamWriter outputStream = new OutputStreamWriter(new FileOutputStream(filePath, true), "UTF-8");
+            BufferedWriter bufferedWriter = new BufferedWriter(outputStream);
+            System.out.println("Próbuję zapisać");
+            bufferedWriter.write(customerLine);
+            bufferedWriter.close();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return customer;
+    }
+
+    private String customerToCsvLine(Customer customer) {
+        StringBuilder stringBuilder = new StringBuilder();
+        //99,Dorothy.Jones@fakegmail.com,Dorothy,Jones,VIP,970
+        stringBuilder.append(customer.getId())
+                .append(",")
+                .append(customer.getLogin())
+                .append(",")
+                .append(customer.getFirstName())
+                .append(",")
+                .append(customer.getLastName())
+                .append(",")
+                .append(String.valueOf(customer.getCustomerType()))
+                .append(",")
+                .append(customer.getAddressId());
+
+        return stringBuilder.toString();
+    }
 }

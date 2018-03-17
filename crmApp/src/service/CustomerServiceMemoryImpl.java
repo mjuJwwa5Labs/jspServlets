@@ -4,11 +4,14 @@ import dao.CustomerDao;
 import dao.CustomerDaoInMemoryImpl;
 import dto.CustomerDto;
 import entity.Customer;
+import entity.CustomerType;
 import mapper.CustomerMapper;
 import mapper.CustomerMapperImpl;
 
+import javax.servlet.ServletContext;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class CustomerServiceMemoryImpl implements CustomerService {
 
@@ -40,7 +43,7 @@ public class CustomerServiceMemoryImpl implements CustomerService {
     }
 
     @Override
-    public CustomerDto createNewCustomer(CustomerDto customerDto) {
+    public CustomerDto addNewCustomer(Map<String, String> parametersMap, ServletContext servletContext) {
         return null;
     }
 }

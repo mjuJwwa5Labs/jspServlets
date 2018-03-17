@@ -4,6 +4,8 @@ import dto.CustomerDto;
 import entity.Customer;
 import entity.CustomerType;
 
+import java.util.Map;
+
 public class CustomerMapperImpl implements CustomerMapper {
 
     @Override
@@ -65,5 +67,17 @@ public class CustomerMapperImpl implements CustomerMapper {
         }
 
         return new CustomerDto(id,login,firstName,lastName,customerType,addressId);
+    }
+
+    @Override
+    public CustomerDto toCustomerDtoFromMap(Map<String, String> parametersMap) {
+
+        String login = parametersMap.get("login");
+        String firstName = parametersMap.get("firstName");
+        String lastName = parametersMap.get("lastName");
+
+        CustomerDto customerDto = new CustomerDto(null,login,firstName,lastName,null,null);
+
+        return customerDto;
     }
 }

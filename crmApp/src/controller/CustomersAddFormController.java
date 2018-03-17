@@ -1,11 +1,15 @@
 package controller;
 
+import dto.CustomerDto;
 import service.CustomerAddFormValidatorService;
+import service.CustomerService;
+import service.CustomerServiceCsvImpl;
 import service.FormValidatorService;
 import validator.CustomerAddFormValidator;
 import validator.FormValidator;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -46,7 +50,6 @@ public class CustomersAddFormController extends HttpServlet {
 
         FormValidatorService validatorService = new CustomerAddFormValidatorService();
         Map<String,String> requestParametersAfterMapping = validatorService.requestParametersToMap(req.getParameterMap());
-        FormValidator validator = new CustomerAddFormValidator();
 
         System.out.println("POST, ParametersMapSize = " + requestParametersAfterMapping.size() + ", " + LocalTime.now()); //todo
         Map<String,String> validationResult = validatorService.validateForm(req.getParameterMap());
@@ -59,9 +62,20 @@ public class CustomersAddFormController extends HttpServlet {
             System.out.println("form not correct " + LocalTime.now()); //todo
             requestDispatcher.forward(req,resp);
         } else {
-            req.setAttribute("message", "Tutaj będzie obsługa dodawania użytkownika");
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("/messages/userNotification.jsp");
-            requestDispatcher.forward(req,resp);
+            ServletContext servletContext = getServletContext();
+            CustomerService customerService = new CustomerServiceCsvImpl();
+            CustomerDto createdCustomer = customerService.addNewCustomer(requestParametersAfterMapping, servletContext);
+
+            if (createdCustomer!=null) {
+                System.out.println(createdCustomer.getId());
+                RequestDispatcher requestDispatcher = req.getRequestDispatcher("/customers");
+                requestDispatcher.forward(req,resp);
+            } else {
+                req.setAttribute("messageTitle", "Coś nie działa:-(");
+                req.setAttribute("messageBody", "Wystąpił problem z dodaniem użytkownika");
+                RequestDispatcher requestDispatcher = req.getRequestDispatcher("/messages/userNotification.jsp");
+                requestDispatcher.forward(req,resp);
+            }
         }
 
     }

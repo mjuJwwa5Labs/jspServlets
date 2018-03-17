@@ -46,4 +46,16 @@ public class CustomerDto {
     public Integer getAddressId() {
         return addressId;
     }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setCustomerType(CustomerType customerType) {
+        this.customerType = customerType;
+    }
+
+    public void setAddressId(Integer addressId) {
+        this.addressId = addressId;
+    }
 }

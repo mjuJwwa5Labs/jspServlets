@@ -3,12 +3,18 @@ package dao;
 import entity.Customer;
 import entity.CustomerType;
 
+import javax.servlet.ServletContext;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerDaoInMemoryImpl implements CustomerDao {
 
     String customerDb;
+    String[] customersCsv;
+
+    public CustomerDaoInMemoryImpl() {
+        this.customersCsv = createCsv();
+    }
 
     @Override
     public Customer getById(Integer id) {
@@ -30,7 +36,6 @@ public class CustomerDaoInMemoryImpl implements CustomerDao {
 
     private List<Customer> parseCsvToCustomerData() {
         List<Customer> customerList = new ArrayList<>();
-        String[] customersCsv = createCsv();
 
         for (String line : customersCsv) {
             String[] lineSplitted = line.split(",");
@@ -60,4 +65,8 @@ public class CustomerDaoInMemoryImpl implements CustomerDao {
         return emulatedCsv;
     }
 
+    @Override
+    public Customer addNewCustomer(Customer customer, ServletContext servletContext) {
+        return null;
+    }
 }

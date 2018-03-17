@@ -3,6 +3,7 @@ package controller;
 import dto.CustomerDto;
 import service.CustomerService;
 import service.CustomerServiceFactory;
+import service.CustomerServiceFactoryEnum;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,7 +21,7 @@ public class CustomerDetailsController extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        CustomerService customerService = CustomerServiceFactory.factory("csv");
+        CustomerService customerService = CustomerServiceFactory.factory(CustomerServiceFactoryEnum.CSV);
         try {
 
             Integer id = Integer.valueOf(req.getParameter("customerId"));
@@ -32,8 +33,16 @@ public class CustomerDetailsController extends HttpServlet{
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("/customers/customers.jsp");
             requestDispatcher.forward(req,resp);
 
-        } catch (NumberFormatException e) {
-            req.setAttribute("message", "To nie jest poprawny numer klienta");
+        }
+        catch (NumberFormatException e) {
+            req.setAttribute("messageTitle", "Problem z wyszukiwaniem użytkownika");
+            req.setAttribute("messageBody", "To nie jest poprawny numer klienta");
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("/messages/userNotification.jsp");
+            requestDispatcher.forward(req,resp);
+        }
+        catch (NullPointerException e) {
+            req.setAttribute("messageTitle", "Problem z wyszukiwaniem użytkownika");
+            req.setAttribute("messageBody", "To nie jest poprawny numer klienta");
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("/messages/userNotification.jsp");
             requestDispatcher.forward(req,resp);
         }

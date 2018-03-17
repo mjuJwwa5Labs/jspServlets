@@ -8,14 +8,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Wystąpił problem</title>
+    <title><%=request.getAttribute("messageTitle")%></title>
 </head>
 <body>
     <header>
-        Coś poszło źle...
+        Komunikat:
     </header>
     <h1>
-        <%=request.getAttribute("message")%>
+        <%=request.getAttribute("messageBody")%>
     </h1>
 </body>
 </html>
