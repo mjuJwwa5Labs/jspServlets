@@ -11,9 +11,9 @@ public class TwitterMessageServiceImpl implements TwitterMessageService {
 
     @Override
     public TwitterMessageDto fingById(Integer id) {
-        TwitterMessageDto twitterMessageDto1 = new TwitterMessageDto(1,"first message", "mike");
-        TwitterMessageDto twitterMessageDto2 = new TwitterMessageDto(2,"second message", "john");
-        TwitterMessageDto twitterMessageDto3 = new TwitterMessageDto(3,"third message", "mike");
+        TwitterMessageDto twitterMessageDto1 = new TwitterMessageDto(1,"first message", "mike", "pierwszy wpis");
+        TwitterMessageDto twitterMessageDto2 = new TwitterMessageDto(2,"second message", "john", "drugi wpis");
+        TwitterMessageDto twitterMessageDto3 = new TwitterMessageDto(3,"third message", "mike", "trzeci wpis");
 
         Map<Integer, TwitterMessageDto> twitterMap = new HashMap<>();
         twitterMap.put(twitterMessageDto1.getId(),twitterMessageDto1);
@@ -27,9 +27,9 @@ public class TwitterMessageServiceImpl implements TwitterMessageService {
 
     @Override
     public List<TwitterMessageDto> findAll() {
-        TwitterMessageDto twitterMessageDto1 = new TwitterMessageDto(1,"first message", "mike");
-        TwitterMessageDto twitterMessageDto2 = new TwitterMessageDto(2,"second message", "john");
-        TwitterMessageDto twitterMessageDto3 = new TwitterMessageDto(3,"third message", "mike");
+        TwitterMessageDto twitterMessageDto1 = new TwitterMessageDto(1,"first message", "mike", "pierwszy wpis");
+        TwitterMessageDto twitterMessageDto2 = new TwitterMessageDto(2,"second message", "john", "drugi wpis");
+        TwitterMessageDto twitterMessageDto3 = new TwitterMessageDto(3,"third message", "mike", "trzeci wpis");
 
         List<TwitterMessageDto> twitterList = new ArrayList<>();
         twitterList.add(twitterMessageDto1);

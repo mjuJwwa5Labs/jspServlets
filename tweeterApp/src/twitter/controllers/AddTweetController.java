@@ -16,7 +16,7 @@ public class AddTweetController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("singleTweetModel", new TwitterMessageDto());
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/tweets/tweet.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/tweets_jstl/tweet.jsp");
         dispatcher.forward(req, resp);
     }
 
@@ -30,7 +30,7 @@ public class AddTweetController extends HttpServlet {
         String message = "Użytkowniku " + userName + " dodałeś tweeta o wiadomości: \n" + tweetMessage;
         req.setAttribute("message", message);
 
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/tweets/message/message.jsp");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/tweets_jstl/message/message.jsp");
         requestDispatcher.forward(req,resp);
     }
 }

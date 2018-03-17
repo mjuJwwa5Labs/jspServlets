@@ -31,7 +31,7 @@ public class SingleTweetController extends HttpServlet {
 
         req.setAttribute("singleTweetModel", foundTweet);
 
-        RequestDispatcher dispatcher = req.getRequestDispatcher("tweets/tweet.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("tweets_jstl/tweet.jsp");
         dispatcher.forward(req,resp);
     }
 }

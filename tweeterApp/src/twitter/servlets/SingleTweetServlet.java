@@ -21,8 +21,8 @@ public class SingleTweetServlet extends HttpServlet{
         String tweetIdAsString = req.getParameter("tweetId");
         Integer tweetId = Integer.valueOf(tweetIdAsString);
 
-        TwitterMessageDto twitterMessageDto1 = new TwitterMessageDto(1,"first message", "mike");
-        TwitterMessageDto twitterMessageDto2 = new TwitterMessageDto(2,"second message", "john");
+        TwitterMessageDto twitterMessageDto1 = new TwitterMessageDto(1,"first message", "mike", "pierwszy");
+        TwitterMessageDto twitterMessageDto2 = new TwitterMessageDto(2,"second message", "john", "drugi");
 
         Map<Integer, TwitterMessageDto> twitterMap = new HashMap<>();
         twitterMap.put(twitterMessageDto1.getId(),twitterMessageDto1);

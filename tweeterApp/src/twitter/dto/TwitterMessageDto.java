@@ -8,13 +8,20 @@ public class TwitterMessageDto {
 
     private String username="";
 
+    private String title="";
+
     public TwitterMessageDto() {
     }
 
-    public TwitterMessageDto(Integer id, String message, String username) {
+    public String getTitle() {
+        return title;
+    }
+
+    public TwitterMessageDto(Integer id, String message, String username, String title) {
         this.id = id;
         this.message = message;
         this.username = username;
+        this.title = title;
     }
 
     public Integer getId() {

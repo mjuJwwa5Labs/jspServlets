@@ -20,8 +20,8 @@ public class TweetServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ServletOutputStream out = resp.getOutputStream();
 
-        TwitterMessageDto twitterMessageDto1 = new TwitterMessageDto(1,"first message", "mike");
-        TwitterMessageDto twitterMessageDto2 = new TwitterMessageDto(2,"second message", "john");
+        TwitterMessageDto twitterMessageDto1 = new TwitterMessageDto(1,"first message", "mike", "pierwszy");
+        TwitterMessageDto twitterMessageDto2 = new TwitterMessageDto(2,"second message", "john", "drugi");
 
         List<TwitterMessageDto> twitterList = new ArrayList<>();
         twitterList.add(twitterMessageDto1);
