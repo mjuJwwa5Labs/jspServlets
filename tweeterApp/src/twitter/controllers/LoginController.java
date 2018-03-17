@@ -16,5 +16,5 @@ public class LoginController extends HttpServlet{
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/tweets_jstl/login/loginPage.jsp");
         requestDispatcher.forward(req,resp);
     }
-    
+
 }
