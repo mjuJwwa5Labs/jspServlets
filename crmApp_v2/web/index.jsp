@@ -9,13 +9,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <jsp:include page="/crmApp/common/headBegin.jsp"></jsp:include>
-<title>Tytuł strony</title>
+<title>Strona Głównay</title>
 <jsp:include page="/crmApp/common/headEnd.jsp"></jsp:include>
 <body>
 <jsp:include page="/crmApp/common/navigation.jsp"></jsp:include>
+<div class="container-fluid" style="margin-top:80px; margin-bottom:10px">
 
 
 
+</div>
 <jsp:include page="/crmApp/common/footer.jsp"></jsp:include>
 </body>
 </html>

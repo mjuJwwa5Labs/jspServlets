@@ -7,30 +7,27 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">crmApp</a>
+            <label class="navbar-brand">crmApp</label>
         </div>
         <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Mój profil</a></li>
-            <li><a href="#">Lista klientów</a></li>
-            <li><a href="#">Page 2</a></li>
-            <li><a href="#">Page 3</a></li>
-
+            <%--<li class="active"><a href="#">Mój profil</a></li>--%>
+            <li><a href="/customers">Lista klientów</a></li>
+            <li class="disabled"><a href="#">Moje zadania</a></li>
+            <li class="disabled"><a href="#">Mój profil</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <%--<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>--%>
-                <li class="dropdown">
+                <li class="dropdown disabled">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Język / Language<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="#">Polski</a></li>
                         <li><a href="#">English</a></li>
                     </ul>
                 </li>
-            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logowanie</a></li>
+            <li class="disabled"><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logowanie</a></li>
         </ul>
     </div>
-
-
 </nav>

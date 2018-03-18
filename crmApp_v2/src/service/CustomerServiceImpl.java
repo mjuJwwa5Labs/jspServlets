@@ -5,6 +5,7 @@ import dao.CustomerDaoImplStaticList;
 import dto.CustomerDto;
 import entity.Customer;
 import mapper.CustomerMapper;
+import mapper.CustomerOptionalMapper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,29 +16,30 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public List<CustomerDto> getAllCustomers() {
         CustomerDao customerDao = new CustomerDaoImplStaticList();
-        CustomerMapper customerMapper = new CustomerMapper();
+        CustomerMapper mapper = new CustomerMapper();
 
         List<Customer> customerList = customerDao.getAllCustomers();
         List<CustomerDto> customerDtoList = new ArrayList<>();
 
         customerList
                 .stream()
-                .forEach((c) -> customerDtoList.add(customerMapper.customerToCustomerDto(c)));
+                .forEach((c) -> customerDtoList.add(mapper.toCustomerDto(c)));
 
 
         return customerDtoList;
     }
 
     @Override
-    //todo refaoktoring na użycie CustomerDto
-    public Optional<Customer> getById(Integer id) {
+    public Optional<CustomerDto> getById(Integer id) {
         CustomerDao customerDao = new CustomerDaoImplStaticList();
-        return customerDao.getById(id);
+        Optional<Customer> customer = customerDao.getById(id);
+        CustomerOptionalMapper mapper = new CustomerOptionalMapper();
+        Optional<CustomerDto> customerDto = mapper.tooCustomerDtoOptional(customer);
+        return customerDto;
     }
 
     @Override
-    //todo refaoktoring na użycie CustomerDto
-    public Customer addNewCustomer(Customer customer) {
+    public CustomerDto addNewCustomer(Customer customer) {
         CustomerDao customerDao = new CustomerDaoImplStaticList();
 
         if (customer.getId()==null) {
@@ -45,8 +47,9 @@ public class CustomerServiceImpl implements CustomerService {
             customer.setId(id);
         }
 
+        CustomerMapper mapper = new CustomerMapper();
         Customer addedCustomer = customerDao.addNewCustomer(customer);
-        return addedCustomer;
+        return mapper.toCustomerDto(addedCustomer);
     }
 
     private Integer getNewestId() {
