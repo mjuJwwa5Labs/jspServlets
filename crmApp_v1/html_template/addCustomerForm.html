@@ -1,0 +1,59 @@
+<html>
+<!-- <style><%@include file="/WEB-INF/css/style.css"%></style> -->
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="WEB-INF\css\style.css">
+    <title>Formualarz dodawania nowego klienta</title>
+</head>
+<body>
+    <header>
+        Formularz dodawania nowego klienta
+    </header>
+
+    <div class="customerAddForm">
+        <form action="/customers/addCustomer" method="post">
+            <div class="customerAddFormRow">
+                <div class="customerAddFormLabel">
+                    <label for="login">Login:</label>
+                </div>
+                <div class="customerAddFormField">
+                    <input type="text" name="login" id="login" value="">
+                </div>
+            </div>
+            <div class="customerAddFormRow">
+                    <div class="customerAddFormLabel">
+                    <label for="firstName">Imie:</label>
+                </div>
+                <div class="customerAddFormField">
+                    <input type="text" name="firstName" id="firstName" value="">
+                </div>
+            </div>
+            <div class="customerAddFormRow">
+                    <div class="customerAddFormLabel">
+                    <label for="lastName">Nazwisko:</label>
+                </div>
+                <div class="customerAddFormField">
+                    <input type="text" name="lastName" id="lastName" value="">
+                </div>
+            </div>
+            <div class="customerAddFormRow">
+                    <div class="customerAddFormLabel">
+                    <label for="phoneNumber">Numer telefonu:</label>
+                </div>
+                <div class="customerAddFormField">
+                    <input type="text" name="phoneNumber" id="phoneNumber" value="">
+                </div>
+            </div>
+            <div class="customerSubmitRow">
+                    <div class="customerAddFormLabel">
+                    </div>
+                    <div class="customerAddFormField">
+                        <input class="customerAddSubmit" type="submit" value="Zapisz zmiany">
+                    </div>
+                </div>
+        </form>
+    </div>
+
+</body>
+</html>
