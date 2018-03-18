@@ -12,4 +12,6 @@ public interface TwitterMessageService {
 
     public List<TwitterMessageDto> findTweetsByUsernameAndMessage(String username, String message);
 
+    public List<TwitterMessageDto> findByUser(String username);
+
 }

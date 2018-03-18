@@ -4,10 +4,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>(jstl) Lista tweetów</title>
     <jsp:include page="/tweets_jstl/core_page_components/headerInclusions.jsp"></jsp:include>
+    <title>(jstl) Lista tweetów</title>
 </head>
 <body>
+
 
 <jsp:include page="/tweets_jstl/navigation/topNav.jsp"></jsp:include>
 
@@ -27,16 +28,14 @@
         <tr>
             <th>Numer tweeta</th>
             <th>Tytuł tweeta</th>
-            <th>Nazwa użytkownika</th>
             <th></th>
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${tweetsModel}" var="tweet">
+        <c:forEach items="${myTweets}" var="tweet">
         <tr>
             <td>${tweet.id}</td>
             <td>${tweet.title}</td>
-            <td>${tweet.username}</td>
             <td><a href="/tweet?tweetId=${tweet.id}" data-toggle="tooltip" title="TweetId = ${tweet.id}">Podgląd</a></td>
         </tr>
         </c:forEach>

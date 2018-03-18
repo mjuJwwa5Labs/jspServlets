@@ -10,28 +10,11 @@
 <html>
 <head>
     <title>(jstl) Strona edycji Tweeta</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <jsp:include page="/tweets_jstl/core_page_components/headerInclusions.jsp"></jsp:include>
 </head>
 <body>
 
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/tweets">Mój tweeter</a>
-        </div>
-        <ul class="nav navbar-nav">
-            <li><a href="/addTweet">Dodaj tweeta</a></li>
-            <li><a href="/tweetSearchForm">Wyszukaj tweeta</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <%--<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>--%>
-            <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-        </ul>
-    </div>
-</nav>
+<jsp:include page="/tweets_jstl/navigation/topNav.jsp"></jsp:include>
 
     <c:choose>
         <c:when test="${not empty errorMessage}">
@@ -54,7 +37,7 @@
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="username">Nazwa użytkownika</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="username" name="username" placeholder="wybierz sobie nazwę" value="${singleTweetModel.username}">
+                            <input disabled type="text" class="form-control" id="username" name="username" placeholder="${singleTweetModel.username}" value="${singleTweetModel.username}">
                         </div>
                     </div>
                     <input type="hidden" name="${singleTweetModel.id}"/>
@@ -74,6 +57,8 @@
             </c:if>
         </c:otherwise>
     </c:choose>
-
+<div>
+    <jsp:include page="/tweets_jstl/navigation/footerNavLanguge.jsp"></jsp:include>
+</div>
 </body>
 </html>
