@@ -2,7 +2,7 @@ package twitter.validators;
 
 import twitter.dto.TwitterMessageDto;
 
-public class TwitterTitleMessageValidator implements Validator {
+public class TwitterTitleValidator implements Validator {
 
     private static int MAX_TITLE_LENGTH = 10;
 

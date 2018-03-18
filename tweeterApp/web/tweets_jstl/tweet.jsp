@@ -16,35 +16,48 @@
 
 <jsp:include page="/tweets_jstl/navigation/topNav.jsp"></jsp:include>
 
-    <c:choose>
-        <c:when test="${not empty errorMessage}">
-            <div class="container">
-                <div class="alert alert-warning">
-                    <strong>Czy wiesz czego szukasz?</strong> ${errorMessage}
-                </div>
+<c:choose>
+    <c:when test="${not empty errorMessage}">
+        <div class="container">
+            <div class="alert alert-warning">
+                <strong>Czy wiesz czego szukasz?</strong> ${errorMessage}
             </div>
-        </c:when>
-        <c:otherwise>
-            <c:if test="${not empty singleTweetModel}">
+        </div>
+    </c:when>
+    <c:otherwise>
+        <c:if test="${not empty singleTweetModel}">
             <div class="container">
                 <form class="form-horizontal" action="/addTweet" method="POST">
                     <div class="form-group">
-                        <label class="control-label col-sm-2" for="title">Tytuł</label>
+                        <label class="control-label col-sm-2" for="username">Nazwa użytkownika</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="title" id="title" placeholder="wpisz tytuł" value="${singleTweetModel.title}">
+                            <input disabled type="text" class="form-control" id="username" name="username"
+                                   placeholder="${singleTweetModel.username}" value="${singleTweetModel.username}">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-2" for="username">Nazwa użytkownika</label>
+                        <label class="control-label col-sm-2" for="title">Tytuł</label>
                         <div class="col-sm-10">
-                            <input disabled type="text" class="form-control" id="username" name="username" placeholder="${singleTweetModel.username}" value="${singleTweetModel.username}">
+                            <input type="text" class="form-control" name="title" id="title" placeholder="wpisz tytuł"
+                                   value="${singleTweetModel.title}">
+                                <c:if test="${not empty errors and not empty errors.fieldErrors.title}">
+                                <span class="label label-warning">
+                                        ${errors.fieldErrors.title}
+                                </span>
+                                </c:if>
                         </div>
                     </div>
                     <input type="hidden" name="${singleTweetModel.id}"/>
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="message">Wiadomość</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" id="message" name="message" placeholder="Wprowadź swoją wiadomość">${singleTweetModel.message}</textarea>
+                            <textarea class="form-control" id="message" name="message"
+                                      placeholder="Wprowadź swoją wiadomość">${singleTweetModel.message}</textarea>
+                            <c:if test="${not empty errors and not empty errors.fieldErrors.message}">
+                                <span class="label label-warning">
+                                        ${errors.fieldErrors.message}
+                                </span>
+                            </c:if>
                         </div>
                     </div>
                     <div class="form-group">
@@ -54,9 +67,9 @@
                     </div>
                 </form>
             </div>
-            </c:if>
-        </c:otherwise>
-    </c:choose>
+        </c:if>
+    </c:otherwise>
+</c:choose>
 <div>
     <jsp:include page="/tweets_jstl/navigation/footerNavLanguge.jsp"></jsp:include>
 </div>

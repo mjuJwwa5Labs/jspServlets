@@ -18,4 +18,12 @@ public class Errors {
     public String getErrorMessage(String fieldname) {
         return fieldErrors.get(fieldname);
     }
+
+    public boolean hasFieldErrors() {
+        return fieldErrors!=null;
+    }
+
+    public Map<String, String> getFieldErrors() {
+        return fieldErrors;
+    }
 }
