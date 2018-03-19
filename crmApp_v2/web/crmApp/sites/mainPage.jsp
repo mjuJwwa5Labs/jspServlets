@@ -8,11 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
-    <jsp:include page="/crmApp/common/headBegin.jsp"></jsp:include>
-    <title>Strona Główna</title>
-    <jsp:include page="/crmApp/common/headEnd.jsp"></jsp:include>
+    <jsp:include page="/crmApp/common/head.jsp"></jsp:include>
 <body>
     <jsp:include page="/crmApp/common/navigation.jsp"></jsp:include>
+    <div class="container-fluid" style="margin-top:80px; margin-bottom:10px">
 
 
 

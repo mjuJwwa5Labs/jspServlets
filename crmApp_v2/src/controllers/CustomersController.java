@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name="CustomersController", value = "/customers")
+@WebServlet(name="CustomersController", value = "/logged/customers")
 public class CustomersController extends HttpServlet{
 
     @Override

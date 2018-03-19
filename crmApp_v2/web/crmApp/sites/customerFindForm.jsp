@@ -12,6 +12,9 @@
 <body>
     <jsp:include page="/crmApp/common/navigation.jsp"></jsp:include>
     <div class="container-fluid" style="margin-top:80px; margin-bottom:10px">
+        <c:if test="${empty customerDtoList}">
+            <jsp:include page="/crmApp/forms/findCustomer.jsp"></jsp:include>
+        </c:if>
     </div>
     <jsp:include page="/crmApp/common/footer.jsp"></jsp:include>
 </body>

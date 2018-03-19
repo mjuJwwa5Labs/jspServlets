@@ -1,6 +1,5 @@
 package mapper;
 
-import dao.CustomerDao;
 import dto.CustomerDto;
 import entity.Customer;
 

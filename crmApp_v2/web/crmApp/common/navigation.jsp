@@ -14,8 +14,9 @@
         </div>
         <ul class="nav navbar-nav">
             <%--<li class="active"><a href="#">Mój profil</a></li>--%>
-            <li><a href="/customers">Lista klientów</a></li>
-            <li class="disabled"><a href="#">Moje zadania</a></li>
+            <li><a href="/logged/customers">Lista klientów</a></li>
+            <li><a href="/logged/customers/customer">Wyszukiwarka klientów</a></li>
+            <li class="disabled"><a href="#">Moje zadania <span class="badge media-middle"> 0</span></a></li>
             <li class="disabled"><a href="#">Mój profil</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
@@ -23,8 +24,8 @@
                 <li class="dropdown disabled">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Język / Language<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Polski</a></li>
-                        <li><a href="#">English</a></li>
+                        <li class="disabled"><a href="#">Polski</a></li>
+                        <li class="disabled"><a href="#">English</a></li>
                     </ul>
                 </li>
             <li class="disabled"><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logowanie</a></li>

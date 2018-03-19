@@ -43,7 +43,7 @@ public class CustomerServiceImpl implements CustomerService {
         CustomerDao customerDao = new CustomerDaoImplStaticList();
 
         if (customer.getId()==null) {
-            Integer id = this.getNewestId();
+            Integer id = this.autoIncrementId();
             customer.setId(id);
         }
 
@@ -52,7 +52,7 @@ public class CustomerServiceImpl implements CustomerService {
         return mapper.toCustomerDto(addedCustomer);
     }
 
-    private Integer getNewestId() {
+    private Integer autoIncrementId() {
         CustomerDao customerDao = new CustomerDaoImplStaticList();
         List<Customer> customerList = customerDao.getAllCustomers();
 
@@ -65,6 +65,6 @@ public class CustomerServiceImpl implements CustomerService {
                 .map(customer -> customer.getId())
                 .max((max1,max2)-> Integer.compare(max1,max2))
                 .get();
-        return id;
+        return ++id;
     }
 }
