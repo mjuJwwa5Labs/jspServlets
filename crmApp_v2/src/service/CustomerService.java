@@ -14,4 +14,6 @@ public interface CustomerService {
 
     public CustomerDto addNewCustomer(Customer customer);
 
+    public List<CustomerDto> findByCustomerDto(CustomerDto customerDto);
+
 }

@@ -29,7 +29,7 @@ public class Errors {
     }
 
     public boolean hasErrors() {
-        return errors!=null;
+        return errors!=null && errors.size()>0;
     }
 
     public Map<String, List<String>> getErrors() {

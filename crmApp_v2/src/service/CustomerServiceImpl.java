@@ -4,15 +4,33 @@ import dao.CustomerDao;
 import dao.CustomerDaoImplStaticList;
 import dto.CustomerDto;
 import entity.Customer;
+import helpers.CustomerDtoFinderComparator;
 import mapper.CustomerMapper;
 import mapper.CustomerOptionalMapper;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
 public class CustomerServiceImpl implements CustomerService {
 
+    //CREATE
+    @Override
+    public CustomerDto addNewCustomer(Customer customer) {
+        CustomerDao customerDao = new CustomerDaoImplStaticList();
+
+        if (customer.getId()==null) {
+            Integer id = this.autoIncrementId();
+            customer.setId(id);
+        }
+
+        CustomerMapper mapper = new CustomerMapper();
+        Customer addedCustomer = customerDao.addNewCustomer(customer);
+        return mapper.toCustomerDto(addedCustomer);
+    }
+
+    //READ
     @Override
     public List<CustomerDto> getAllCustomers() {
         CustomerDao customerDao = new CustomerDaoImplStaticList();
@@ -39,19 +57,25 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public CustomerDto addNewCustomer(Customer customer) {
-        CustomerDao customerDao = new CustomerDaoImplStaticList();
+    public List<CustomerDto> findByCustomerDto(CustomerDto customerDto) {
+        List<CustomerDto> customerDtoList = this.getAllCustomers();
+        CustomerDto customerDtoToFind = customerDto;
+        List<CustomerDto> foundCustomers = new ArrayList<>();
+        CustomerDtoFinderComparator comparator = new CustomerDtoFinderComparator();
 
-        if (customer.getId()==null) {
-            Integer id = this.autoIncrementId();
-            customer.setId(id);
+        for (CustomerDto customerDtoElement : customerDtoList) {
+            int compareResult = comparator.compare(customerDtoElement,customerDtoToFind);
+            if (compareResult==0) {
+                foundCustomers.add(customerDtoElement);
+            }
         }
-
-        CustomerMapper mapper = new CustomerMapper();
-        Customer addedCustomer = customerDao.addNewCustomer(customer);
-        return mapper.toCustomerDto(addedCustomer);
+        return foundCustomers;
     }
 
+    //UPDATE
+    //DELETE
+
+    //private methods
     private Integer autoIncrementId() {
         CustomerDao customerDao = new CustomerDaoImplStaticList();
         List<Customer> customerList = customerDao.getAllCustomers();

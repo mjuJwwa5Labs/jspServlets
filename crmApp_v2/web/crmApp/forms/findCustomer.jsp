@@ -17,13 +17,13 @@
     <div class="form-group">
         <label class="control-label col-sm-2" for="firstname">Imię</label>
         <div class="col-sm-6">
-            <input type="email" class="form-control" id="firstname" name="firstname" placeholder="Imię klienta" disabled>
+            <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Imię klienta">
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-sm-2" for="lastname">Nazwisko</label>
         <div class="col-sm-6">
-            <input type="email" class="form-control" id="lastname" name="lastname" placeholder="Nazwisko klienta" disabled>
+            <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Nazwisko klienta">
         </div>
     </div>
     <div class="form-group">

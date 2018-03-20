@@ -12,6 +12,23 @@
 <body>
     <jsp:include page="/crmApp/common/navigation.jsp"></jsp:include>
     <div class="container-fluid" style="margin-top:80px; margin-bottom:10px">
+        <c:if test="${not empty errors.errors.errorMessage}">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class="control-label col-sm-1"></label>
+                    <div class="col-sm-7">
+                        <div class="alert alert-danger">
+                            <strong>Uwaga!</strong>
+                            <c:forEach items="${errors.errors.errorMessage}" var="errorItem">
+                                ${errorItem}
+                            </c:forEach>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </c:if>
+
+
         <c:if test="${empty customerDtoList}">
             <jsp:include page="/crmApp/forms/findCustomer.jsp"></jsp:include>
         </c:if>
