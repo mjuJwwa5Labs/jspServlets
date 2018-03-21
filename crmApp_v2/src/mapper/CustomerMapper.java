@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 public class CustomerMapper {
 
-    public Customer toCustomer(CustomerDto customerDto) {
+    public Customer from(CustomerDto customerDto) {
         Integer id = customerDto.getId();
         String firstname = customerDto.getFirstname();
         String lastname = customerDto.getLastname();
@@ -16,7 +16,7 @@ public class CustomerMapper {
         return new Customer(id,firstname,lastname,created,modified);
     }
 
-    public CustomerDto toCustomerDto(Customer customer) {
+    public CustomerDto from(Customer customer) {
         Integer id = customer.getId();
         String firstname = customer.getFirstname();
         String lastname = customer.getLastname();

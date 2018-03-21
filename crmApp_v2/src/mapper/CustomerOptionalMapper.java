@@ -11,7 +11,7 @@ public class CustomerOptionalMapper {
         if (customerOptional.isPresent()) {
             Customer customer = customerOptional.get();
             CustomerMapper customerMapper = new CustomerMapper();
-            CustomerDto customerDto = customerMapper.toCustomerDto(customer);
+            CustomerDto customerDto = customerMapper.from(customer);
             return Optional.of(customerDto);
         }
 

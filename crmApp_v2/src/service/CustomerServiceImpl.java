@@ -9,7 +9,6 @@ import mapper.CustomerMapper;
 import mapper.CustomerOptionalMapper;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,7 +26,7 @@ public class CustomerServiceImpl implements CustomerService {
 
         CustomerMapper mapper = new CustomerMapper();
         Customer addedCustomer = customerDao.addNewCustomer(customer);
-        return mapper.toCustomerDto(addedCustomer);
+        return mapper.from(addedCustomer);
     }
 
     //READ
@@ -41,7 +40,7 @@ public class CustomerServiceImpl implements CustomerService {
 
         customerList
                 .stream()
-                .forEach((c) -> customerDtoList.add(mapper.toCustomerDto(c)));
+                .forEach((c) -> customerDtoList.add(mapper.from(c)));
 
 
         return customerDtoList;

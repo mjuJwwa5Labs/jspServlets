@@ -22,14 +22,14 @@
             </thead>
             <tbody>
             <c:forEach items="${customerDtoList}" var="customerDtoElement">
-            <tr>
-                <td>${customerDtoElement.id}</td>
-                <td>${customerDtoElement.firstname}</td>
-                <td>${customerDtoElement.lastname}</td>
-                <td>${customerDtoElement.created}</td>
-                <td>${customerDtoElement.modified}</td>
-                <td><a href="">Szczegóły</a></td>
-            </tr>
+                <tr>
+                    <td>${customerDtoElement.id}</td>
+                    <td>${customerDtoElement.firstname}</td>
+                    <td>${customerDtoElement.lastname}</td>
+                    <td>${customerDtoElement.created}</td>
+                    <td>${customerDtoElement.modified}</td>
+                    <td><a href="#">Szczegóły</a></td>
+                </tr>
             </c:forEach>
             </tbody>
         </table>

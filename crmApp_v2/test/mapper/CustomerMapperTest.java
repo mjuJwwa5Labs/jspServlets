@@ -16,7 +16,7 @@ public class CustomerMapperTest {
     public void shouldMapCustomerDtoToCustomer() {
         CustomerDto customerDto = new CustomerDto(1,"firstname","lastname", LocalDateTime.now(),LocalDateTime.now());
         CustomerMapper mapper = new CustomerMapper();
-        Customer customer = mapper.toCustomer(customerDto);
+        Customer customer = mapper.from(customerDto);
         customerAssert = new CustomerAssert(customer);
 
         customerAssert
@@ -31,7 +31,7 @@ public class CustomerMapperTest {
     public void shouldMapCustomerToCustomerDto() {
         Customer customer = new Customer(1,"firstname","lastname", LocalDateTime.now(),LocalDateTime.now());
         CustomerMapper mapper = new CustomerMapper();
-        CustomerDto customerDto = mapper.toCustomerDto(customer);
+        CustomerDto customerDto = mapper.from(customer);
         customerAssert = new CustomerAssert(customer);
 
         customerAssert
