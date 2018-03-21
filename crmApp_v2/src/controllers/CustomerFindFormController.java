@@ -9,6 +9,7 @@ import validators.Validator;
 import validators.customerFindForm.CustomerFindFormCustomerDto;
 import validators.customerFindForm.CustomerFindFormFirstname;
 import validators.customerFindForm.CustomerFindFormId;
+import validators.customerFindForm.CustomerFindFormLastname;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -23,7 +24,11 @@ import java.util.List;
 @WebServlet(name = "CustomerFindFormController", value = "/logged/customers/customer")
 public class CustomerFindFormController extends HttpServlet{
 
-    private List<Validator> validators = Arrays.asList(new CustomerFindFormCustomerDto(),new CustomerFindFormId(), new CustomerFindFormFirstname());
+    private List<Validator> validators = Arrays.asList(
+            new CustomerFindFormCustomerDto(),
+            new CustomerFindFormId(),
+            new CustomerFindFormFirstname(),
+            new CustomerFindFormLastname());
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -50,19 +55,17 @@ public class CustomerFindFormController extends HttpServlet{
         for (Validator validator : validators) {
             validator.validate(customerDto,errors);
         }
+        req.setAttribute("customerDto", customerDto);
 
         if (errors.hasErrors()) {
             req.setAttribute("errors", errors);
-            req.setAttribute("customerDto", customerDto);
             RequestDispatcher dispatcher = req.getRequestDispatcher("/crmApp/sites/customerFindForm.jsp");
             dispatcher.forward(req,resp);
-
         } else {
-
             CustomerService customerService = new CustomerServiceImpl();
             List<CustomerDto> customerDtoList = customerService.findByCustomerDto(customerDto);
             req.setAttribute("customerDtoList", customerDtoList);
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/crmApp/sites/customersList.jsp");
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/crmApp/sites/customerFindForm.jsp");
             dispatcher.forward(req,resp);
         }
     }

@@ -15,8 +15,8 @@
         <c:if test="${not empty errors.errors.errorMessage}">
             <form class="form-horizontal">
                 <div class="form-group">
-                    <label class="control-label col-sm-1"></label>
-                    <div class="col-sm-7">
+                    <label class="control-label col-sm-2"></label>
+                    <div class="col-sm-6">
                         <div class="alert alert-danger">
                             <strong>Uwaga!</strong>
                             <c:forEach items="${errors.errors.errorMessage}" var="errorItem">
@@ -29,9 +29,12 @@
         </c:if>
 
 
-        <c:if test="${empty customerDtoList}">
-            <jsp:include page="/crmApp/forms/findCustomer.jsp"></jsp:include>
-        </c:if>
+        <%--<c:if test="${empty customerDtoList}">--%>
+        <jsp:include page="/crmApp/forms/findCustomer.jsp"></jsp:include>
+        <%--</c:if>--%>
+
+        <jsp:include page="/crmApp/sites/customersListTable.jsp"></jsp:include>
+
     </div>
     <jsp:include page="/crmApp/common/footer.jsp"></jsp:include>
 </body>

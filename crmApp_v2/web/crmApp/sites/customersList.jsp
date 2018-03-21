@@ -23,6 +23,7 @@
             </div>
         </div>
     </c:forEach>
+
     </div>
     <jsp:include page="/crmApp/common/footer.jsp"></jsp:include>
 </body>

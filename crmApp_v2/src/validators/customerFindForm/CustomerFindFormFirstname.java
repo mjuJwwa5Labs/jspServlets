@@ -15,11 +15,11 @@ public class CustomerFindFormFirstname implements Validator {
         String firstname = customerDto.getFirstname();
 
         if (firstname!=null && firstname!="" && firstname.length()<FIRSTNAME_MIN_CHARACTERS) {
-            errors.addError("firstname","Imię nie może być krótsze niż " + FIRSTNAME_MIN_CHARACTERS + " znaków");
+            errors.addError("firstname","Imię musi być dłuższe od " + FIRSTNAME_MIN_CHARACTERS + " znaków");
         }
 
         if (firstname!=null && firstname!="" && firstname.length()>FIRSTNAME_MAX_CHARACTERS) {
-            errors.addError("firstname","Imię może mieć maksymalnie " + FIRSTNAME_MAX_CHARACTERS + " znaków");
+            errors.addError("firstname","Imię musi być krótsze od " + FIRSTNAME_MAX_CHARACTERS + " znaków");
         }
 
         if (firstname!=null && firstname!="" && !firstname.matches("[a-zA-Z]+")) {
