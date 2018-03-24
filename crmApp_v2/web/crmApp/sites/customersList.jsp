@@ -7,11 +7,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html>
-    <jsp:include page="/crmApp/common/head.jsp"></jsp:include>
-<body>
-    <jsp:include page="/crmApp/common/navigation.jsp"></jsp:include>
-    <div class="container-fluid" style="margin-top:80px; margin-bottom:10px">
+<jsp:include page="/crmApp/common/coreHtml/siteOpenSection.jsp"></jsp:include>
+
     <c:forEach items="${customerDtoList}" var="customerDto">
         <div class="media">
             <div class="media-left media-top">
@@ -24,7 +21,4 @@
         </div>
     </c:forEach>
 
-    </div>
-    <jsp:include page="/crmApp/common/footer.jsp"></jsp:include>
-</body>
-</html>
+<jsp:include page="/crmApp/common/coreHtml/siteCloseSection.jsp"></jsp:include>

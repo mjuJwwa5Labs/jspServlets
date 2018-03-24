@@ -11,20 +11,22 @@ import mapper.CustomerOptionalMapper;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class CustomerServiceImpl implements CustomerService {
 
     //CREATE
     @Override
-    public CustomerDto addNewCustomer(Customer customer) {
+    public CustomerDto addNewCustomer(CustomerDto customerDto) {
         CustomerDao customerDao = new CustomerDaoImplStaticList();
+        CustomerMapper mapper = new CustomerMapper();
+        Customer customer = mapper.from(customerDto);
 
         if (customer.getId()==null) {
             Integer id = this.autoIncrementId();
             customer.setId(id);
         }
 
-        CustomerMapper mapper = new CustomerMapper();
         Customer addedCustomer = customerDao.addNewCustomer(customer);
         return mapper.from(addedCustomer);
     }
@@ -41,7 +43,6 @@ public class CustomerServiceImpl implements CustomerService {
         customerList
                 .stream()
                 .forEach((c) -> customerDtoList.add(mapper.from(c)));
-
 
         return customerDtoList;
     }
@@ -62,12 +63,10 @@ public class CustomerServiceImpl implements CustomerService {
         List<CustomerDto> foundCustomers = new ArrayList<>();
         CustomerDtoFinderComparator comparator = new CustomerDtoFinderComparator();
 
-        for (CustomerDto customerDtoElement : customerDtoList) {
-            int compareResult = comparator.compare(customerDtoElement,customerDtoToFind);
-            if (compareResult==0) {
-                foundCustomers.add(customerDtoElement);
-            }
-        }
+        foundCustomers = customerDtoList
+                .stream()
+                .filter(c -> comparator.compare(c,customerDto)==0)
+                .collect(Collectors.toList());
         return foundCustomers;
     }
 

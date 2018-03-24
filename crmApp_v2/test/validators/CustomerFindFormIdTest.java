@@ -1,6 +1,8 @@
 package validators;
 
 import dto.CustomerDto;
+import helpers.LocalDateTimeFormatter;
+import helpers.LocalDateTimeFormatterImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,30 +15,32 @@ public class CustomerFindFormIdTest {
     Validator validator;
     Errors errors;
     CustomerDto customerDto;
+    LocalDateTimeFormatter formatter;
 
     @Before
     public void setUp() {
         validator = new CustomerFindFormId();
         errors = new Errors();
+        formatter = new LocalDateTimeFormatterImpl();
     }
 
     @Test
     public void shouldBeFineWhenCustomerDtoIdIsCorrect() {
-        customerDto = new CustomerDto(1,"a","b", LocalDateTime.now(),LocalDateTime.now());
+        customerDto = new CustomerDto(1,"a","b", formatter.from(LocalDateTime.now()),formatter.from(LocalDateTime.now()));
         validator.validate(customerDto,errors);
         Assert.assertNull("Errors map should be null", errors.getErrors());
     }
 
     @Test
     public void shouldBeErrorWhenCustomerDtoIdIsZero() {
-        customerDto = new CustomerDto(0,"a","b", LocalDateTime.now(),LocalDateTime.now());
+        customerDto = new CustomerDto(0,"a","b", formatter.from(LocalDateTime.now()),formatter.from(LocalDateTime.now()));
         validator.validate(customerDto,errors);
         Assert.assertEquals("Expected error: Id nie możę być mniejsze niż 1", "Id nie możę być mniejsze niż 1", errors.getErrorMessages("id").get(0));
     }
 
     @Test
     public void shouldBeFineWhenCustomerDtoIdIsNull() {
-        customerDto = new CustomerDto(null,"a","b", LocalDateTime.now(),LocalDateTime.now());
+        customerDto = new CustomerDto(null,"a","b", formatter.from(LocalDateTime.now()),formatter.from(LocalDateTime.now()));
         validator.validate(customerDto,errors);
         Assert.assertNull("Errors map should be null", errors.getErrors());
     }

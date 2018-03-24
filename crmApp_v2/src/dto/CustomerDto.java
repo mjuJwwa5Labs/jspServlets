@@ -7,10 +7,10 @@ public class CustomerDto {
     private Integer id;
     private String firstname;
     private String lastname;
-    private LocalDateTime created;
-    private LocalDateTime modified;
+    private String created;
+    private String modified;
 
-    public CustomerDto(Integer id, String firstname, String lastname, LocalDateTime created, LocalDateTime modified) {
+    public CustomerDto(Integer id, String firstname, String lastname, String created, String modified) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -30,11 +30,9 @@ public class CustomerDto {
         return lastname;
     }
 
-    public LocalDateTime getCreated() {
-        return created;
-    }
+    public String getCreated() { return created; }
 
-    public LocalDateTime getModified() {
+    public String getModified() {
         return modified;
     }
 }

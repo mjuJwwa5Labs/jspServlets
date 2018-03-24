@@ -1,14 +1,20 @@
 package filters;
 
+import dto.UserDto;
+import entity.UserGroups;
+import service.UserService;
+import service.UserServiceImpl;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Optional;
 
-@WebFilter(value={"/logged/*", "/"})
-public class LoginFilter implements Filter {
+@WebFilter(value = "/logged/users/*")
+public class UsersFilter implements Filter{
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -20,13 +26,22 @@ public class LoginFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         HttpSession httpSession = request.getSession();
+        String login = (String) httpSession.getAttribute("login");
+        Optional<UserDto> userDtoOptional = null;
 
-        if ((httpSession.getAttribute("username")==null) && (httpSession.getAttribute("login")==null)) {
-            response.sendRedirect("/login?backUrl="+request.getServletPath());
-            return;
+        if (login!=null && login!="") {
+            UserService userService = new UserServiceImpl();
+            userDtoOptional = userService.getByLogin(login);
+            if (userDtoOptional.isPresent()) {
+                if (userService.isAdminGroup(userDtoOptional.get())) {
+                    httpSession.setAttribute("userGroup", UserGroups.ADMIN);
+                } else
+                    httpSession.setAttribute("userGroup",UserGroups.USER);
+            }
         }
 
         filterChain.doFilter(servletRequest,servletResponse);
+
     }
 
     @Override

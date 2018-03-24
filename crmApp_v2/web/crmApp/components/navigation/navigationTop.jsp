@@ -10,20 +10,19 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
-            <label class="navbar-brand">crmApp</label>
+            <label class="navbar-brand"><a href="/"> crmApp</a></label>
         </div>
         <ul class="nav navbar-nav">
             <%--<li class="active"><a href="#">Mój profil</a></li>--%>
-            <li><a href="/logged/customers">Lista klientów</a></li>
-            <li><a href="/logged/customers/customer">Wyszukiwarka klientów</a></li>
             <c:choose>
                 <c:when test="${empty sessionScope.username and empty sessionScope.login}">
-                    <li class="disabled"><a href="#">Moje zadania <span class="badge media-middle"> 0</span></a></li>
-                    <li class="disabled"><a href="#">Mój profil</a></li>
+                    <li class="disabled"><a href="#">Opcje dostępne po zalogowaniu</a></li>
                 </c:when>
                 <c:otherwise>
+                    <li><a href="/logged/users">Pracownicy</a></li>
+                    <li><a href="/logged/customers/customer">Klienci</a></li>
                     <li class="enabled"><a href="#">Moje zadania <span class="badge media-middle"> 0</span></a></li>
-                    <li class="enabled"><a href="#">Mój profil</a></li>
+                    <li class="enabled"><a href="/sites/myProfile">Mój profil</a></li>
                 </c:otherwise>
             </c:choose>
         </ul>

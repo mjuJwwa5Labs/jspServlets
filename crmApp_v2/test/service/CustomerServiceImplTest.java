@@ -4,6 +4,8 @@ import asserts.CustomerDtoAssert;
 import asserts.CustomerDtoOptionalAssert;
 import dto.CustomerDto;
 import entity.Customer;
+import helpers.LocalDateTimeFormatter;
+import helpers.LocalDateTimeFormatterImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,9 +19,11 @@ public class CustomerServiceImplTest {
     CustomerService customerService;
     CustomerDtoAssert customerDtoAssert;
     CustomerDtoOptionalAssert customerDtoOptionalAssert;
+    LocalDateTimeFormatter formatter;
 
     @Before
     public void setUp() {
+        formatter = new LocalDateTimeFormatterImpl();
         customerService = new CustomerServiceImpl();
     }
 
@@ -43,16 +47,17 @@ public class CustomerServiceImplTest {
                 .hasId(foundCustomerDto.get().getId())
                 .hasFirstname(foundCustomerDto.get().getFirstname())
                 .hasLastname(foundCustomerDto.get().getLastname())
-                .hasCreationDate(foundCustomerDto.get().getCreated())
-                .hasModificationDate(foundCustomerDto.get().getModified());
+                .hasCreationDate(formatter.from(foundCustomerDto.get().getCreated()))
+                .hasModificationDate(formatter.from(foundCustomerDto.get().getModified()));
     }
 
     @Test
     public void shouldAddNewCustomerWithoutId() {
         Customer customer = new Customer(null,"firstname","lastname", LocalDateTime.now(),LocalDateTime.now());
+        CustomerDto customerDto = new CustomerDto(customer.getId(),customer.getFirstname(),customer.getLastname(),formatter.from(customer.getCreated()),formatter.from(customer.getModified()));
 
         List<CustomerDto> listBefore = customerService.getAllCustomers();
-        CustomerDto addedCustomerDto = customerService.addNewCustomer(customer);
+        CustomerDto addedCustomerDto = customerService.addNewCustomer(customerDto);
         List<CustomerDto> listAfter = customerService.getAllCustomers();
         Integer incrementedId = this.getIncrementedId(listBefore);
 
@@ -74,8 +79,8 @@ public class CustomerServiceImplTest {
                 .hasId(addedCustomerDto.getId())
                 .hasFirstname(addedCustomerDto.getFirstname())
                 .hasLastname(addedCustomerDto.getLastname())
-                .hasCreationDate(addedCustomerDto.getCreated())
-                .hasModificationDate(addedCustomerDto.getModified());
+                .hasCreationDate(formatter.from(addedCustomerDto.getCreated()))
+                .hasModificationDate(formatter.from(addedCustomerDto.getModified()));
 
     }
 
@@ -84,7 +89,8 @@ public class CustomerServiceImplTest {
         List<CustomerDto> listBefore = customerService.getAllCustomers();
         Integer incrementedId = this.getIncrementedId(listBefore);
         Customer customer = new Customer(incrementedId,"firstname","lastname", LocalDateTime.now(),LocalDateTime.now());
-        CustomerDto addedCustomerDto = customerService.addNewCustomer(customer);
+        CustomerDto customerDto = new CustomerDto(customer.getId(),customer.getFirstname(),customer.getLastname(),formatter.from(customer.getCreated()),formatter.from(customer.getModified()));
+        CustomerDto addedCustomerDto = customerService.addNewCustomer(customerDto);
         List<CustomerDto> listAfter = customerService.getAllCustomers();
         Optional<CustomerDto> foundCustomer = customerService.getById(incrementedId);
 
@@ -104,8 +110,8 @@ public class CustomerServiceImplTest {
                 .hasId(addedCustomerDto.getId())
                 .hasFirstname(addedCustomerDto.getFirstname())
                 .hasLastname(addedCustomerDto.getLastname())
-                .hasCreationDate(addedCustomerDto.getCreated())
-                .hasModificationDate(addedCustomerDto.getModified());
+                .hasCreationDate(formatter.from(addedCustomerDto.getCreated()))
+                .hasModificationDate(formatter.from(addedCustomerDto.getModified()));
 
     }
 

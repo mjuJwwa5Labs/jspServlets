@@ -1,8 +1,7 @@
-package service;
+package mapper;
 
 import dto.UserDto;
 import entity.User;
-import mapper.UserMapper;
 
 public class UserToUserDtoMapperImpl implements UserToUserDtoMapper {
 

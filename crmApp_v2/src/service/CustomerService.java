@@ -12,7 +12,7 @@ public interface CustomerService {
 
     public Optional<CustomerDto> getById(Integer id);
 
-    public CustomerDto addNewCustomer(Customer customer);
+    public CustomerDto addNewCustomer(CustomerDto customerDto);
 
     public List<CustomerDto> findByCustomerDto(CustomerDto customerDto);
 

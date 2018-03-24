@@ -1,4 +1,4 @@
-package service;
+package mapper;
 
 import dto.UserDto;
 import entity.User;

@@ -12,4 +12,6 @@ public interface UserService {
 
     public List<UserDto> getAllUsers();
 
+    public boolean isAdminGroup(UserDto userDto);
+
 }

@@ -7,8 +7,4 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<jsp:include page="/crmApp/common/coreHtml/siteOpenSection.jsp"></jsp:include>
-    <div class="container">
-        <jsp:include page="/crmApp/components/forms/loginForm.jsp"></jsp:include>
-    </div>
-<jsp:include page="/crmApp/common/coreHtml/siteCloseSection.jsp"></jsp:include>
+<div class="container-fluid" style="margin-top:80px; margin-bottom:10px">

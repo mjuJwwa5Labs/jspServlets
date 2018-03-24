@@ -9,6 +9,8 @@ public class CustomerDtoFinderComparator implements Comparator {
 
     @Override
     public int compare(Object o1, Object o2) {
+        LocalDateTimeFormatter formatter = new LocalDateTimeFormatterImpl();
+
         CustomerDto c1 = (CustomerDto) o1;
         CustomerDto c2 = (CustomerDto) o2;
 
@@ -30,17 +32,17 @@ public class CustomerDtoFinderComparator implements Comparator {
             return 0;
         }
 
-        LocalDateTime created1 = c1.getCreated();
-        LocalDateTime created2 = c2.getCreated();
-        if ((notNullObject(created1,created2)) && (created1==created2)) {
-            return 0;
-        }
-
-        LocalDateTime modified1 = c1.getModified();
-        LocalDateTime modified2 = c2.getModified();
-        if ((notNullObject(modified1,modified2)) && (modified1==modified2)) {
-            return 0;
-        }
+//        LocalDateTime created1 = formatter.from(c1.getCreated());
+//        LocalDateTime created2 = formatter.from(c2.getCreated());
+//        if ((notNullObject(created1,created2)) && (created1==created2)) {
+//            return 0;
+//        }
+//
+//        LocalDateTime modified1 = formatter.from(c1.getModified());
+//        LocalDateTime modified2 = formatter.from(c2.getModified());
+//        if ((notNullObject(modified1,modified2)) && (modified1==modified2)) {
+//            return 0;
+//        }
         return 1;
     }
 

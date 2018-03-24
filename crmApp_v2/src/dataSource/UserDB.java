@@ -19,7 +19,11 @@ public class UserDB {
 
     public static boolean checkPassword(String login, String password) {
          createUsers();
-         return passwordMap.get(login).equals(password);
+         try {
+             return passwordMap.get(login).equals(password);
+         } catch (NullPointerException e) {
+             return false;
+         }
     }
 
     private static void createUsers() {

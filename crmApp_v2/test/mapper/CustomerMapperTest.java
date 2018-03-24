@@ -3,6 +3,8 @@ package mapper;
 import asserts.CustomerAssert;
 import dto.CustomerDto;
 import entity.Customer;
+import helpers.LocalDateTimeFormatter;
+import helpers.LocalDateTimeFormatterImpl;
 import org.junit.Test;
 
 import java.time.LocalDateTime;
@@ -11,10 +13,12 @@ import java.time.LocalDateTime;
 public class CustomerMapperTest {
 
     private CustomerAssert customerAssert;
+    private LocalDateTimeFormatter formatter;
 
     @Test
     public void shouldMapCustomerDtoToCustomer() {
-        CustomerDto customerDto = new CustomerDto(1,"firstname","lastname", LocalDateTime.now(),LocalDateTime.now());
+        formatter = new LocalDateTimeFormatterImpl();
+        CustomerDto customerDto = new CustomerDto(1,"firstname","lastname", formatter.from(LocalDateTime.now()),formatter.from(LocalDateTime.now()));
         CustomerMapper mapper = new CustomerMapper();
         Customer customer = mapper.from(customerDto);
         customerAssert = new CustomerAssert(customer);
@@ -23,8 +27,8 @@ public class CustomerMapperTest {
                 .hasId(customerDto.getId())
                 .hasFirstname(customerDto.getFirstname())
                 .hasLastname(customerDto.getLastname())
-                .hasCreationDate(customerDto.getCreated())
-                .hasModificationDate(customerDto.getModified());
+                .hasCreationDate(formatter.from(customerDto.getCreated()))
+                .hasModificationDate(formatter.from(customerDto.getModified()));
     }
 
     @Test
@@ -38,8 +42,8 @@ public class CustomerMapperTest {
                 .hasId(customerDto.getId())
                 .hasFirstname(customerDto.getFirstname())
                 .hasLastname(customerDto.getLastname())
-                .hasCreationDate(customerDto.getCreated())
-                .hasModificationDate(customerDto.getModified());
+                .hasCreationDate(formatter.from(customerDto.getCreated()))
+                .hasModificationDate(formatter.from(customerDto.getModified()));
     }
 
 }
