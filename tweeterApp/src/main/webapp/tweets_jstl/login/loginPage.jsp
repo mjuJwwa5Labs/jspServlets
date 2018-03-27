@@ -44,6 +44,13 @@
                 <button type="submit" class="btn btn-default">Zaloguj</button>
             </div>
         </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+            </div>
+            <div class="col-sm-offset-2 col-sm-10">
+                <a href="/register">Rejestracja >></a>
+            </div>
+        </div>
     </form>
 </div>
 

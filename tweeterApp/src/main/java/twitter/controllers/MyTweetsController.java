@@ -3,7 +3,7 @@ package twitter.controllers;
 
 import twitter.dto.TwitterMessageDto;
 import twitter.service.TwitterMessageService;
-import twitter.service.TwitterMessageServiceImpl;
+import twitter.service.TwitterMessageServiceDbImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,7 +18,7 @@ import java.util.List;
 @WebServlet(name="MyTweetsController", value="/myTweets")
 public class MyTweetsController extends HttpServlet {
 
-    private TwitterMessageService twitterMessageService = new TwitterMessageServiceImpl();
+    private TwitterMessageService twitterMessageService = new TwitterMessageServiceDbImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

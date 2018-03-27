@@ -18,6 +18,8 @@ public class User {
 
     private String password;
 
+    private String status;
+
     @OneToMany
     private List<Message> messages;
 
@@ -40,5 +42,9 @@ public class User {
 
     public String getPassword() {
         return password;
+    }
+
+    public String getStatus() {
+        return status;
     }
 }

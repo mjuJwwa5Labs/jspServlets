@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(value = {"/tweet", "/addTweet", "/myTweets"})
+@WebFilter(value = {"/tweet", "/addTweet", "/myTweets", "/deleteTweet"})
 public class LoginFilter implements Filter {
 
     @Override

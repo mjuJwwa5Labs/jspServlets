@@ -25,6 +25,12 @@
         </div>
         <input type="hidden" name="${singleTweetModel.id}"/>
         <div class="form-group">
+            <label class="control-label col-sm-2" for="searchTitle">Tytuł tweeta</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="searchTitle" name="searchTitle" placeholder="Wpiszy tytuł szukanego tweeta" value="">
+            </div>
+        </div>
+        <div class="form-group">
             <label class="control-label col-sm-2" for="searchMessage">Wiadomość</label>
             <div class="col-sm-10">
                 <textarea class="form-control" id="searchMessage" name="searchMessage" placeholder="Wpisz szukaną wiadomość"></textarea>

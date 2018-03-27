@@ -16,11 +16,22 @@
 
 <jsp:include page="/tweets_jstl/navigation/topNav.jsp"></jsp:include>
 
-    <div class="container">
-        <div class="alert alert-success">
-            <strong>Hurrra!</strong> ${message}
+    <c:if test="${not empty message}">
+        <div class="container">
+            <div class="alert alert-success">
+                <strong>Hurrra!</strong> ${message}
+            </div>
         </div>
-    </div>
+    </c:if>
+    <c:if test="${not empty errorMessage}">
+        <div class="container">
+            <div class="alert alert-warning">
+                <strong>Ups!</strong> ${errorMessage}
+            </div>
+        </div>
+    </c:if>
+
+
 <div>
     <jsp:include page="/tweets_jstl/navigation/footerNavLanguge.jsp"></jsp:include>
 </div>

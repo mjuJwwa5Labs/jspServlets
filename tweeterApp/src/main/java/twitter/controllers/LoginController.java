@@ -1,6 +1,8 @@
 package twitter.controllers;
 
+import twitter.exceptions.TwitterAuthorizationException;
 import twitter.service.LoginService;
+import twitter.service.LoginServiceDbImpl;
 import twitter.service.LoginServiceImpl;
 
 import javax.servlet.RequestDispatcher;
@@ -15,7 +17,7 @@ import java.io.IOException;
 @WebServlet(name = "LoginController", value = "/login")
 public class LoginController extends HttpServlet{
 
-    LoginService loginService = new LoginServiceImpl();
+    LoginService loginService = new LoginServiceDbImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -27,7 +29,11 @@ public class LoginController extends HttpServlet{
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
-        boolean logged = loginService.login(username,password);
+        boolean logged = false;
+        try {
+            logged = loginService.login(username,password);
+        } catch (TwitterAuthorizationException e) {
+        }
 
         if (logged) {
             String backUrl = req.getParameter("backUrl");

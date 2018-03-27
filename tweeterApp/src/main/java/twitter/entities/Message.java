@@ -21,6 +21,13 @@ public class Message {
     public Message() {
     }
 
+    public Message(Integer id, String title, String message, User user) {
+        this.id = id;
+        this.title = title;
+        this.message = message;
+        this.user = user;
+    }
+
     public Message(String title, String message, User user) {
         this.title = title;
         this.message = message;

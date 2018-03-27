@@ -1,9 +1,10 @@
 package twitter.controllers;
 
 
+import twitter.dto.SearchTwitterMessageDto;
 import twitter.dto.TwitterMessageDto;
 import twitter.service.TwitterMessageService;
-import twitter.service.TwitterMessageServiceImpl;
+import twitter.service.TwitterMessageServiceDbImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,10 +22,12 @@ public class TweetSearchController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String searchUsername = req.getParameter("searchUsername");
         String searchMessage = req.getParameter("searchMessage");
+        String searchTitle = req.getParameter("searchTitle");
+        SearchTwitterMessageDto searchTwitterMessageDto = new SearchTwitterMessageDto(searchTitle,searchMessage,searchUsername);
 
-        TwitterMessageService twitterService = new TwitterMessageServiceImpl();
+        TwitterMessageService twitterService = new TwitterMessageServiceDbImpl();
 
-        List<TwitterMessageDto> foundTweets = twitterService.findTweetsByUsernameAndMessage(searchUsername,searchMessage);
+        List<TwitterMessageDto> foundTweets = twitterService.findTweet(searchTwitterMessageDto);
 
         req.setAttribute("tweetsModel", foundTweets);
         req.setAttribute("resultsCount", String.valueOf(foundTweets.size()));

@@ -1,5 +1,7 @@
 C:\marek\Repositories\mjuJwwa5Labs\jspServlets\tweeterApp\src\main\java\twitter\hibernate\HibernateConfigurationLoader.java
 C:\marek\Repositories\mjuJwwa5Labs\jspServlets\tweeterApp\src\main\java\twitter\service\LoginServiceImpl.java
+C:\marek\Repositories\mjuJwwa5Labs\jspServlets\tweeterApp\src\main\java\twitter\controllers\RegisterController.java
+C:\marek\Repositories\mjuJwwa5Labs\jspServlets\tweeterApp\src\main\java\twitter\service\HashService.java
 C:\marek\Repositories\mjuJwwa5Labs\jspServlets\tweeterApp\src\main\java\twitter\service\TwitterMessageServiceImpl.java
 C:\marek\Repositories\mjuJwwa5Labs\jspServlets\tweeterApp\src\main\java\twitter\entities\User.java
 C:\marek\Repositories\mjuJwwa5Labs\jspServlets\tweeterApp\src\main\java\twitter\enums\Language.java
@@ -10,14 +12,18 @@ C:\marek\Repositories\mjuJwwa5Labs\jspServlets\tweeterApp\src\main\java\twitter\
 C:\marek\Repositories\mjuJwwa5Labs\jspServlets\tweeterApp\src\main\java\twitter\controllers\MyTweetsController.java
 C:\marek\Repositories\mjuJwwa5Labs\jspServlets\tweeterApp\src\main\java\twitter\validators\Errors.java
 C:\marek\Repositories\mjuJwwa5Labs\jspServlets\tweeterApp\src\main\java\twitter\controllers\LogoutController.java
+C:\marek\Repositories\mjuJwwa5Labs\jspServlets\tweeterApp\src\main\java\twitter\exceptions\TwitterAuthorizationException.java
 C:\marek\Repositories\mjuJwwa5Labs\jspServlets\tweeterApp\src\main\java\twitter\servlets\SingleTweetServlet.java
 C:\marek\Repositories\mjuJwwa5Labs\jspServlets\tweeterApp\src\main\java\twitter\controllers\AddTweetController.java
 C:\marek\Repositories\mjuJwwa5Labs\jspServlets\tweeterApp\src\main\java\twitter\controllers\TweetSearchFormController.java
 C:\marek\Repositories\mjuJwwa5Labs\jspServlets\tweeterApp\src\main\java\twitter\entities\Message.java
+C:\marek\Repositories\mjuJwwa5Labs\jspServlets\tweeterApp\src\main\java\twitter\controllers\DeleteTweetController.java
 C:\marek\Repositories\mjuJwwa5Labs\jspServlets\tweeterApp\src\main\java\twitter\hibernate\dao\TwitterMessageDao.java
 C:\marek\Repositories\mjuJwwa5Labs\jspServlets\tweeterApp\src\main\java\twitter\hibernate\dao\UserDaoImpl.java
 C:\marek\Repositories\mjuJwwa5Labs\jspServlets\tweeterApp\src\main\java\twitter\exceptions\TwitterExecption.java
+C:\marek\Repositories\mjuJwwa5Labs\jspServlets\tweeterApp\src\main\java\twitter\service\LoginServiceDbImpl.java
 C:\marek\Repositories\mjuJwwa5Labs\jspServlets\tweeterApp\src\main\java\twitter\servlets\TweetServlet.java
+C:\marek\Repositories\mjuJwwa5Labs\jspServlets\tweeterApp\src\main\java\twitter\dto\SearchTwitterMessageDto.java
 C:\marek\Repositories\mjuJwwa5Labs\jspServlets\tweeterApp\src\main\java\twitter\controllers\TweetsController.java
 C:\marek\Repositories\mjuJwwa5Labs\jspServlets\tweeterApp\src\main\java\twitter\hibernate\dao\TwitterMessageDaoImpl.java
 C:\marek\Repositories\mjuJwwa5Labs\jspServlets\tweeterApp\src\main\java\twitter\validators\TwitterTitleValidator.java

@@ -10,5 +10,4 @@ public interface UserDao {
     public User findByUsername(String username) throws DatabaseException;
 
     public User findByUsernameAndPassword(String username, String password) throws DatabaseException;
-
 }

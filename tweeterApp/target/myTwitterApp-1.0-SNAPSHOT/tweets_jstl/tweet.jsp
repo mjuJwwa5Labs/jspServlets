@@ -47,7 +47,7 @@
                                 </c:if>
                         </div>
                     </div>
-                    <input type="hidden" name="${singleTweetModel.id}"/>
+                    <input type="hidden" name="id" value="${singleTweetModel.id}"/>
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="message">Wiadomość</label>
                         <div class="col-sm-10">

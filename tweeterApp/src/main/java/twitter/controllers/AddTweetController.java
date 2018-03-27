@@ -1,6 +1,8 @@
 package twitter.controllers;
 
 import twitter.dto.TwitterMessageDto;
+import twitter.service.TwitterMessageService;
+import twitter.service.TwitterMessageServiceDbImpl;
 import twitter.validators.Errors;
 import twitter.validators.TwitterMessageValidator;
 import twitter.validators.TwitterTitleValidator;
@@ -21,6 +23,7 @@ import java.util.List;
 public class AddTweetController extends HttpServlet {
 
     private List<Validator> validators = Arrays.asList(new TwitterTitleValidator(), new TwitterMessageValidator());
+    private TwitterMessageService twitterMessageService = new TwitterMessageServiceDbImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -36,9 +39,17 @@ public class AddTweetController extends HttpServlet {
 
         HttpSession session = req.getSession();
         String username = (String) session.getAttribute("username");
+        String idParam = req.getParameter("id");
+        Integer id;
+
+        try {
+            id = Integer.valueOf(idParam);
+        } catch (NumberFormatException e) {
+            id = null;
+        }
 
         //to coś poniżej to się w Springu nazywa binding
-        TwitterMessageDto twitterMessageDto = new TwitterMessageDto(null, tweetMessage, username, title);
+        TwitterMessageDto twitterMessageDto = new TwitterMessageDto(id, tweetMessage, username, title);
         Errors errors = new Errors();
         for (Validator validator : validators) {
             validator.validate(twitterMessageDto,errors);
@@ -50,7 +61,7 @@ public class AddTweetController extends HttpServlet {
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("/tweets_jstl/tweet.jsp");
             requestDispatcher.forward(req,resp);
         } else {
-            //todo zapisywanie tweeta do bazy danych
+            twitterMessageService.save(twitterMessageDto);
             String message = String.format("Drogi użytkowniku %s dodałeś tweeta o tytule %s i wiadomości %s",
                     username, title, tweetMessage);
             req.setAttribute("message", message);

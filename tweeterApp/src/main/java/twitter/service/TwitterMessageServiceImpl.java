@@ -1,12 +1,14 @@
 package twitter.service;
 
+import twitter.dto.SearchTwitterMessageDto;
 import twitter.dto.TwitterMessageDto;
+import twitter.exceptions.TwitterAuthorizationException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+@Deprecated
 public class TwitterMessageServiceImpl implements TwitterMessageService {
 
     @Override
@@ -76,6 +78,16 @@ public class TwitterMessageServiceImpl implements TwitterMessageService {
 
     @Override
     public void save(TwitterMessageDto twitterMessageDto) {
+        throw new UnsupportedOperationException("not implemented yet");
+    }
 
+    @Override
+    public void delete(Integer id, String username) throws TwitterAuthorizationException {
+        throw new UnsupportedOperationException("not implemented yet");
+    }
+
+    @Override
+    public List<TwitterMessageDto> findTweet(SearchTwitterMessageDto searchTwitterMessageDto) {
+        throw new UnsupportedOperationException("not implemented yet");
     }
 }

@@ -20,9 +20,9 @@ public class TwitterMessageValidator implements Validator {
         if (message!=null && message.length()> MAX_MESSAGE_LENGTH) {
             errors.addFieldError("message","Pole wiadomość może mieć maksymalnie "+ MAX_MESSAGE_LENGTH +" znaków");
         }
-
-        if (!message.matches("[a-zA-Z]+")) {
-            errors.addFieldError("message","Wiadomość może zawierać tylko litery");
-        }
+//
+//        if (!message.matches("[a-zA-Z]+")) {
+//            errors.addFieldError("message","Wiadomość może zawierać tylko litery");
+//        }
     }
 }

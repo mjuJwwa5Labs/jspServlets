@@ -1,3 +1,4 @@
+twitter\service\HashService.class
 twitter\service\TwitterMessageServiceDbImpl$1.class
 twitter\hibernate\dao\UserDao.class
 twitter\controllers\TweetSearchController.class
@@ -18,9 +19,12 @@ twitter\servlets\SingleTweetServlet.class
 twitter\validators\TwitterMessageValidator.class
 twitter\helpers\CookieHelper.class
 twitter\exceptions\DatabaseException.class
+twitter\service\LoginServiceDbImpl.class
 twitter\hibernate\dao\TwitterMessageDaoImpl.class
 twitter\validators\Errors.class
 twitter\controllers\LogoutController.class
+twitter\exceptions\TwitterAuthorizationException.class
+twitter\controllers\RegisterController.class
 twitter\service\TwitterMessageServiceDbImpl.class
 twitter\service\TwitterMessageService.class
 twitter\filters\LanguageFilter.class
@@ -30,8 +34,10 @@ twitter\entities\Message.class
 twitter\controllers\AddTweetController.class
 twitter\controllers\TweetSearchFormController.class
 twitter\exceptions\TwitterExecption.class
+twitter\controllers\DeleteTweetController.class
 twitter\entities\User.class
 twitter\dto\TwitterMessageDto.class
+twitter\dto\SearchTwitterMessageDto.class
 twitter\hibernate\dao\UserDaoImpl.class
 twitter\service\TwitterMessageServiceImpl.class
 twitter\controllers\LoginController.class

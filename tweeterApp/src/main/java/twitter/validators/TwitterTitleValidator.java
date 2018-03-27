@@ -5,7 +5,7 @@ import twitter.dto.TwitterMessageDto;
 
 public class TwitterTitleValidator implements Validator {
 
-    private static int MAX_TITLE_LENGTH = 10;
+    private static int MAX_TITLE_LENGTH = 100;
 
     @Override
     public void validate(Object object, Errors errors) {

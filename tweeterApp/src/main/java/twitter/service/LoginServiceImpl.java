@@ -2,7 +2,7 @@ package twitter.service;
 
 import java.util.HashMap;
 import java.util.Map;
-
+@Deprecated
 public class LoginServiceImpl implements LoginService {
 
     static Map<String, String> userMap = new HashMap<>();

@@ -37,7 +37,13 @@
             <td>${tweet.id}</td>
             <td>${tweet.title}</td>
             <td>${tweet.username}</td>
-            <td><a href="/tweet?tweetId=${tweet.id}" data-toggle="tooltip" title="TweetId = ${tweet.id}">Podgląd</a></td>
+            <td>
+                <c:if test="${not empty sessionScope.username and tweet.username==sessionScope.username}">
+                    <a href="/tweet?tweetId=${tweet.id}" data-toggle="tooltip" title="TweetId = ${tweet.id}">Edytuj</a>
+                    <a href="#">|</a>
+                    <a href="/deleteTweet?tweetId=${tweet.id}" data-toggle="tooltip" title="TweetId = ${tweet.id}">Usuń</a>
+                </c:if>
+            </td>
         </tr>
         </c:forEach>
         </tbody>
